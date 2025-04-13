@@ -1,0 +1,19 @@
+include: package:lints/recommended.yaml
+
+formatter:
+  page_width: 100
+
+linter:
+  rules:
+    - prefer_single_quotes
+    - avoid_web_libraries_in_flutter
+
+# analyzer:
+#   exclude:
+#     - path/to/excluded/files/**
+
+# For more information about the core and recommended set of lints, see
+# https://dart.dev/go/core-lints
+
+# For additional information about configuring this file, see
+# https://dart.dev/guides/language/analysis-options
