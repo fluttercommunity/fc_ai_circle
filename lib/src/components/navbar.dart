@@ -1,5 +1,4 @@
 import 'package:jaspr/browser.dart';
-import 'package:web/web.dart' hide Text;
 
 class Navbar extends StatelessComponent {
   @override
