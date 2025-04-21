@@ -6,9 +6,12 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
 }
-
-#output {
-  padding: 20px;
-  text-align: center;
+body > * {
+    flex-grow: 1;
 }
