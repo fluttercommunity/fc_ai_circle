@@ -25,7 +25,7 @@ class HomePage extends StatelessComponent {
         'display': 'flex',
         'flex-direction': 'column',
         'justify-content': 'center',
-        'background': 'radial-gradient(circle at 50% 50%, #1f1f1f, #000000)',
+        'background': 'radial-gradient(circle at 50% 50%, #1f1f2e, #0a0a0f)',
         'position': 'relative',
         'overflow': 'hidden',
       }),
@@ -44,7 +44,7 @@ class HomePage extends StatelessComponent {
               styles: Styles(raw: {
                 'font-size': '64px',
                 'margin-bottom': '20px',
-                'background': 'linear-gradient(to right, #ffffff, #ff6700)',
+                'background': 'var(--accent-gradient)',
                 '-webkit-background-clip': 'text',
                 'background-clip': 'text',
                 'color': 'transparent',
@@ -190,7 +190,7 @@ class HomePage extends StatelessComponent {
       tag: 'section',
       styles: Styles(raw: {
         'padding': '80px 0',
-        'background': 'linear-gradient(135deg, var(--primary-color), #330000)',
+        'background': 'linear-gradient(135deg, #1f1f2e, #32164f)',
       }),
       children: [
         DomComponent(
