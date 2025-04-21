@@ -32,3 +32,7 @@ coverage
 
 # FVM Version Cache
 .fvm/
+
+# Cursor related
+.cursor/
+cursorrules
