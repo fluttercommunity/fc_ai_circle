@@ -18,11 +18,12 @@ body > * {
 }
 
 :root {
-    --primary-color: #0f0f0f;
-    --accent-color: #ff6700;
-    --text-color: #ffffff;
-    --secondary-text: #b3b3b3;
-    --background: #000000;
+    --primary-color: #181822;
+    --accent-color: #ab57ff;
+    --accent-gradient: linear-gradient(90deg, #ab57ff, #4e9fff);
+    --text-color: #e6e6f2;
+    --secondary-text: #8888aa;
+    --background: #0a0a0f;
 }
 
 body {
@@ -89,7 +90,7 @@ a:hover {
 .hero h1 {
     font-size: 64px;
     margin-bottom: 20px;
-    background: linear-gradient(to right, #ffffff, #ff6700);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -144,7 +145,7 @@ a:hover {
 /* Footer styles */
 
 footer {
-    background-color: #0a0a0a;
+    background-color: #11111a;
     padding: 60px 0 30px;
 }
 
