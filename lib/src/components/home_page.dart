@@ -49,7 +49,7 @@ class HomePage extends StatelessComponent {
                 'background-clip': 'text',
                 'color': 'transparent',
               }),
-              child: Text('Unleash Your Digital Potential'),
+              child: Text('Build Agentic Flutter Experiences'),
             ),
             DomComponent(
               tag: 'p',
@@ -58,8 +58,8 @@ class HomePage extends StatelessComponent {
                 'margin-bottom': '40px',
                 'color': 'var(--secondary-text)',
               }),
-              child: Text('Powerful tools for modern creators. Build, launch, '
-                  'and scale your next big idea with our intuitive platform.'),
+              child: Text(
+                  'A community-powered space for developers building with AI, agentic apps, and next-gen Flutter workflows.'),
             ),
             DomComponent(
               tag: 'div',
@@ -76,7 +76,7 @@ class HomePage extends StatelessComponent {
                   styles: Styles(raw: {
                     'font-size': '18px',
                   }),
-                  child: Text('Start Free Trial'),
+                  child: Text('Explore Builders'),
                 ),
                 DomComponent(
                   tag: 'a',
@@ -92,7 +92,7 @@ class HomePage extends StatelessComponent {
                     'font-weight': '600',
                     'font-size': '18px',
                   }),
-                  child: Text('Learn More'),
+                  child: Text('What is Agentic Flutter?'),
                 ),
               ],
             ),
