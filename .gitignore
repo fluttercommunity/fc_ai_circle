@@ -29,3 +29,6 @@ coverage
 
 # dotenv environment variables file
 .env
+
+# FVM Version Cache
+.fvm/
