@@ -10,6 +10,7 @@ class HomePage extends StatelessComponent {
         _heroSection(),
         _featuresSection(),
         _ctaSection(),
+        _faqSection(),
       ],
     );
   }
@@ -67,18 +68,18 @@ class HomePage extends StatelessComponent {
           children: [
             DomComponent(
               tag: 'h2',
-              child: Text('Why Choose Our Product'),
+              child: Text('Highlights from the Flutter AI Circle'),
             ),
             DomComponent(
               tag: 'div',
               classes: 'features-grid',
               children: [
-                _featureCard('Lightning Fast',
-                    'Experience performance like never before with our optimized platform.'),
-                _featureCard('Highly Secure',
-                    'Your data is protected with enterprise-grade security measures.'),
-                _featureCard('Always Available',
-                    '99.9% uptime guarantee so you\'re always online when it counts.'),
+                // TODO: Add YouTube video embed for past livestream
+                _featureCard('Past Livestream', 'Vibe Coding a Card Game with Norbert & Friends'),
+                // TODO: Add calendar integration or dynamic content for upcoming events
+                _featureCard('Upcoming', 'Humpday Q&A: Agentic Apps Spotlight'),
+                // TODO: Add link to survey form
+                _featureCard('Survey', 'Help shape open-source tooling for AI in Flutter'),
               ],
             ),
           ],
@@ -115,22 +116,67 @@ class HomePage extends StatelessComponent {
           children: [
             DomComponent(
               tag: 'h2',
-              child: Text('Ready to Take the Next Step?'),
+              child: Text('Your voice shapes the future of AI in Flutter.'),
             ),
             DomComponent(
               tag: 'p',
               child: Text(
-                'Join thousands of satisfied users who have transformed '
-                'their digital presence with us.',
+                'Take our community survey and help us understand how AI is changing the way we code, collaborate, and create.',
               ),
             ),
             DomComponent(
               tag: 'a',
               classes: 'cta_button',
               attributes: {'href': '#'},
-              child: Text('Get Started Now'),
+              child: Text('Take the Survey'),
             ),
           ],
+        ),
+      ],
+    );
+  }
+
+  Component _faqSection() {
+    return DomComponent(
+      tag: 'section',
+      id: 'faq',
+      children: [
+        DomComponent(
+          tag: 'div',
+          classes: 'container',
+          children: [
+            DomComponent(
+              tag: 'h2',
+              styles: Styles(raw: {
+                'text-align': 'center',
+                'margin-bottom': 'var(--spacing-lg)',
+              }),
+              child: Text('Frequently Asked Questions'),
+            ),
+            _faqItem('What is the Flutter AI Circle?',
+                'The Flutter AI Circle is a community initiative focused on exploring and developing AI-powered capabilities within Flutter apps. We bring together developers interested in building agentic experiences, leveraging AI models, and advancing Flutter\'s potential in this space.'),
+            _faqItem('Who can join this community?',
+                'Anyone interested in the intersection of Flutter and AI is welcome! Whether you\'re a beginner curious about AI capabilities or an experienced developer working on complex agentic apps, this community is for you. We value diverse perspectives and experience levels.'),
+            _faqItem('How can I contribute to the Flutter AI Circle?',
+                'There are many ways to contribute: participate in our surveys, join live coding sessions, share your projects in our forums, contribute to open-source repositories, or help document best practices. Reach out through any of our channels to get involved!'),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Component _faqItem(String question, String answer) {
+    return DomComponent(
+      tag: 'div',
+      classes: 'faq-item',
+      children: [
+        DomComponent(
+          tag: 'h3',
+          child: Text(question),
+        ),
+        DomComponent(
+          tag: 'p',
+          child: Text(answer),
         ),
       ],
     );
