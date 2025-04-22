@@ -70,7 +70,7 @@ class HomePage extends StatelessComponent {
             DomComponent(
               tag: 'h2',
               classes: 'section-title',
-              child: Text('Highlights from the Flutter AI Circle'),
+              child: Text('Highlights from the Flutter Community AI Circle'),
             ),
             DomComponent(
               tag: 'div',
@@ -159,11 +159,11 @@ class HomePage extends StatelessComponent {
               }),
               child: Text('Frequently Asked Questions'),
             ),
-            _faqItem('What is the Flutter AI Circle?',
-                'The Flutter AI Circle is a community initiative focused on exploring and developing AI-powered capabilities within Flutter apps. We bring together developers interested in building agentic experiences, leveraging AI models, and advancing Flutter\'s potential in this space.'),
+            _faqItem('What is the Flutter Community AI Circle?',
+                'The Flutter Community AI Circle is a community initiative focused on exploring and developing AI-powered capabilities within Flutter apps. We bring together developers interested in building agentic experiences, leveraging AI models, and advancing Flutter\'s potential in this space.'),
             _faqItem('Who can join this community?',
                 'Anyone interested in the intersection of Flutter and AI is welcome! Whether you\'re a beginner curious about AI capabilities or an experienced developer working on complex agentic apps, this community is for you. We value diverse perspectives and experience levels.'),
-            _faqItem('How can I contribute to the Flutter AI Circle?',
+            _faqItem('How can I contribute to the Flutter Community AI Circle?',
                 'There are many ways to contribute: participate in our surveys, join live coding sessions, share your projects in our forums, contribute to open-source repositories, or help document best practices. Reach out through any of our channels to get involved!'),
           ],
         ),
