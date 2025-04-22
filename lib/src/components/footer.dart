@@ -28,7 +28,7 @@ class Footer extends StatelessComponent {
                 DomComponent(
                   tag: 'small',
                   classes: 'copyright',
-                  child: Text('© 2025 Flutter Community. All rights reserved.'),
+                  child: Text('© 2025 Flutter Community AI Circle. All rights reserved.'),
                 ),
                 DomComponent(
                   tag: 'div',
