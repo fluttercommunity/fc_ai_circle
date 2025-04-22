@@ -60,22 +60,28 @@ a:hover {
 /* Button styles */
 .cta_button {
     display: inline-block;
-    background-color: var(--accent-color);
-    color: var(--text-color);
+    background: var(--accent-gradient);
+    color: #fff; /* High readability */
     padding: 12px 24px;
     border-radius: var(--border-radius);
     font-weight: 600;
     transition: all var(--transition-speed);
-    border: 1px solid transparent;
+    position: relative;
+    border: none;
+    box-shadow: 0 0 8px var(--shadow-color);
+    text-align: center;
 }
 
 .cta_button:hover {
-    background-color: transparent;
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-    box-shadow: 0 0 15px var(--shadow-color);
-    transform: translateY(-2px);
+    background: var(--accent-gradient);
+    color: #fff;
+    box-shadow: 0 0 12px var(--shadow-color), 0 0 2px var(--accent-color);
+    transform: translateY(-2px) scale(1.03);
+    filter: brightness(1.1);
 }
+  
+
+  
 
 .secondary-button {
     display: inline-flex;
@@ -269,4 +275,53 @@ footer a {
 
 footer a:hover {
     color: var(--accent-color);
+}
+
+/* Navbar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: var(--accent-gradient);
+    transition: width var(--transition-speed);
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }

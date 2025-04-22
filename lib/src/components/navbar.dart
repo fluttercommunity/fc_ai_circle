@@ -5,43 +5,21 @@ class Navbar extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     yield DomComponent(
       tag: 'nav',
-      styles: Styles(raw: {
-        'position': 'fixed',
-        'top': '0',
-        'left': '0',
-        'right': '0',
-        'z-index': '100',
-        'padding': '20px 0',
-        'background-color': 'rgba(0, 0, 0, 0.8)',
-        'backdrop-filter': 'blur(10px)',
-      }),
+      classes: 'navbar',
       children: [
         DomComponent(
           tag: 'div',
           classes: 'container',
-          styles: Styles(raw: {
-            'display': 'flex',
-            'justify-content': 'space-between',
-            'align-items': 'center',
-          }),
           children: [
             DomComponent(
               tag: 'a',
               attributes: {'href': '#'},
-              styles: Styles(raw: {
-                'font-size': '24px',
-                'font-weight': 'bold',
-                'color': 'var(--accent-color)',
-              }),
+              classes: 'navbar-brand',
               child: RawText('Flutter Community<br>AI Circle'),
             ),
             DomComponent(
               tag: 'div',
               classes: 'nav-links',
-              styles: Styles(raw: {
-                'display': 'flex',
-                'gap': '30px',
-              }),
               children: [
                 _navLink('Home', '#'),
                 _navLink('Features', '#features'),
@@ -66,9 +44,7 @@ class Navbar extends StatelessComponent {
     return DomComponent(
       tag: 'a',
       attributes: {'href': href},
-      styles: Styles(raw: {
-        'font-weight': '500',
-      }),
+      classes: 'nav-link',
       child: Text(text),
     );
   }
