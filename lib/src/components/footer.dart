@@ -14,10 +14,11 @@ class Footer extends StatelessComponent {
               tag: 'div',
               classes: 'footer-grid',
               children: [
-                _footerColumn('Community', ['About', 'Careers', 'Blog', 'Press']),
-                _footerColumn('Resources', ['Documentation', 'Guides', 'Support', 'API']),
-                _footerColumn('Channels', ['Discord', 'Twitter', 'YouTube', 'GitHub']),
-                _footerColumn('About', ['Team', 'Partners', 'Privacy', 'Terms']),
+                _footerColumn(
+                    'Community', ['About', 'Mission', 'Join the Circle', 'Start Contributing']),
+                _footerColumn('Resources', ['Docs', 'Templates', 'Survey', 'Events']),
+                _footerColumn('Channels', ['YouTube', 'Twitter', 'Forum', 'GitHub']),
+                _footerColumn('Legal', ['Privacy', 'Terms', 'Code of Conduct', 'Licensing']),
               ],
             ),
             DomComponent(

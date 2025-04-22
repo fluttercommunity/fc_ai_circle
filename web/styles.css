@@ -333,17 +333,23 @@ footer a:hover {
 }
 
 .faq-item {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
     padding: var(--spacing-md);
     background-color: rgba(255, 255, 255, 0.03);
     border-radius: var(--border-radius);
     border-left: 2px solid var(--accent-color);
     transition: all var(--transition-speed);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .faq-item:hover {
     transform: translateX(5px);
-    box-shadow: 0 0 10px rgba(171, 87, 255, 0.1);
+    box-shadow: 0 0 15px rgba(171, 87, 255, 0.15);
+    border-left: 4px solid var(--accent-color);
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
 }
 
 .faq-item h3 {
@@ -356,4 +362,16 @@ footer a:hover {
     color: var(--secondary-text);
     line-height: 1.6;
     margin: 0;
+}
+
+/* Animation Hints - for future implementation */
+.section-title {
+    /* 
+    TODO: Implement scroll-based animations
+    Add fade-in and slide-up animation when section comes into viewport
+    Example:
+    .section-title.visible {
+      animation: fadeSlideUp 0.8s ease forwards;
+    }
+    */
 }

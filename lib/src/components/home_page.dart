@@ -58,6 +58,7 @@ class HomePage extends StatelessComponent {
   }
 
   Component _featuresSection() {
+    // TODO: (maybe/extra) Add scroll-based animation to reveal this section when it enters viewport
     return DomComponent(
       tag: 'section',
       id: 'features',
@@ -68,6 +69,7 @@ class HomePage extends StatelessComponent {
           children: [
             DomComponent(
               tag: 'h2',
+              classes: 'section-title',
               child: Text('Highlights from the Flutter AI Circle'),
             ),
             DomComponent(
@@ -76,9 +78,9 @@ class HomePage extends StatelessComponent {
               children: [
                 // TODO: Add YouTube video embed for past livestream
                 _featureCard('Past Livestream', 'Vibe Coding a Card Game with Norbert & Friends'),
-                // TODO: Add calendar integration or dynamic content for upcoming events
+                // TODO: Add calendar integration or dynamic content for upcoming events - can they add them to their calendar or directly go set a reminder?
                 _featureCard('Upcoming', 'Humpday Q&A: Agentic Apps Spotlight'),
-                // TODO: Add link to survey form
+                // TODO: Add link to survey form/ or forms - maybe regular community one idk.
                 _featureCard('Survey', 'Help shape open-source tooling for AI in Flutter'),
               ],
             ),
@@ -106,6 +108,7 @@ class HomePage extends StatelessComponent {
   }
 
   Component _ctaSection() {
+    // TODO:(maybe/extra)  Add scroll-based fade-in animation for this section
     return DomComponent(
       tag: 'section',
       classes: 'cta-section',
@@ -116,6 +119,7 @@ class HomePage extends StatelessComponent {
           children: [
             DomComponent(
               tag: 'h2',
+              classes: 'section-title',
               child: Text('Your voice shapes the future of AI in Flutter.'),
             ),
             DomComponent(
@@ -137,6 +141,7 @@ class HomePage extends StatelessComponent {
   }
 
   Component _faqSection() {
+    // TODO:(maybe/extra) Implement intersection observer to animate FAQ items sequentially as they come into view
     return DomComponent(
       tag: 'section',
       id: 'faq',
@@ -147,6 +152,7 @@ class HomePage extends StatelessComponent {
           children: [
             DomComponent(
               tag: 'h2',
+              classes: 'section-title',
               styles: Styles(raw: {
                 'text-align': 'center',
                 'margin-bottom': 'var(--spacing-lg)',
