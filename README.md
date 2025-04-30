@@ -1,6 +1,4 @@
-## Flutter AI Circle Website
-
-## Flutteristas Website
+## Flutter Community AI Circle Website
 
 The site is built with Dart utilizing the [Dart Web Platform](https://dart.dev/web) 
 with the [Web](https://pub.dev/packages/web) package.

@@ -14,10 +14,11 @@ class Footer extends StatelessComponent {
               tag: 'div',
               classes: 'footer-grid',
               children: [
-                _footerColumn('Company', ['About', 'Careers', 'Blog', 'Press']),
-                _footerColumn('Product', ['Features', 'Pricing', 'Integrations', 'FAQ']),
-                _footerColumn('Resources', ['Documentation', 'Guides', 'Support', 'API']),
-                _footerColumn('Legal', ['Privacy', 'Terms', 'Security', 'Cookies']),
+                _footerColumn(
+                    'Community', ['About', 'Mission', 'Join the Circle', 'Start Contributing']),
+                _footerColumn('Resources', ['Docs', 'Templates', 'Survey', 'Events']),
+                _footerColumn('Channels', ['YouTube', 'Twitter', 'Forum', 'GitHub']),
+                _footerColumn('Legal', ['Privacy', 'Terms', 'Code of Conduct', 'Licensing']),
               ],
             ),
             DomComponent(
@@ -27,7 +28,7 @@ class Footer extends StatelessComponent {
                 DomComponent(
                   tag: 'small',
                   classes: 'copyright',
-                  child: Text('© 2025 Flutter Community. All rights reserved.'),
+                  child: Text('© 2025 Flutter Community AI Circle. All rights reserved.'),
                 ),
                 DomComponent(
                   tag: 'div',
