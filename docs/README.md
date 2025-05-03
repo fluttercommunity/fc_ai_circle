@@ -19,7 +19,8 @@ Welcome to the **Flutter AI Builders Circle** – an open-source community dedic
 
 ## Our Focus
 
-We’re a community of Flutter developers and AI explorers — from curious newcomers to experienced builders — learning and building together in real time.
+We’re a community of Flutter developers and AI explorers — from curious newcomers 
+to experienced builders — learning and building together in real time.
 
 As the AI landscape evolves, so do we.  
 Instead of declaring fixed goals, our current focus is to:
@@ -49,7 +50,8 @@ Our goal is to make these technologies more accessible to the entire Flutter com
 
 ## Site Info 🌐
 
-This website is built using **Dart** and the **[Jaspr](https://pub.dev/packages/jaspr)** framework to bring a Flutter-style DX to the web.
+This website is built using **Dart** and **[Jaspr](https://pub.dev/packages/jaspr)** 
+framework to bring a Flutter-style DX to the web.
 
 To get started locally:
 

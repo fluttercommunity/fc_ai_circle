@@ -2,42 +2,17 @@ import 'dart:js_interop';
 import 'dart:math' as math;
 
 import 'package:jaspr/ui.dart';
-import 'package:jaspr_router/jaspr_router.dart';
 import 'package:vector_math/vector_math.dart' hide Colors;
 import 'package:web/web.dart';
 
-class Site extends StatefulComponent {
-  const Site({super.key});
+class ThreeDCarousel extends StatefulComponent {
+  const ThreeDCarousel({super.key});
 
   @override
-  State<Site> createState() => _SiteState();
+  State<ThreeDCarousel> createState() => _ThreeDCarouselState();
 }
 
-class _SiteState extends State<Site> {
-  @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield Router(
-      routes: [
-        Route(
-          path: '/',
-          title: 'Welcome',
-          builder: (BuildContext context, RouteState state) {
-            return HomePage();
-          },
-        ),
-      ],
-    );
-  }
-}
-
-class HomePage extends StatefulComponent {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class _ThreeDCarouselState extends State<ThreeDCarousel> {
   late double _last, _elapsed = 0.0;
   bool _paused = false;
 
@@ -95,7 +70,8 @@ class _HomePageState extends State<HomePage> {
         'mouseleave': _onLeave,
       },
       [
-        FloatingIconLink(
+        _FloatingIconLink(
+          link: '#',
           child: Column(
             crossAxisAlignment: AlignItems.center,
             children: [
@@ -104,7 +80,8 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        FloatingIconLink(
+        _FloatingIconLink(
+          link: '#',
           child: Column(
             crossAxisAlignment: AlignItems.center,
             children: [
@@ -113,7 +90,8 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        FloatingIconLink(
+        _FloatingIconLink(
+          link: '#',
           child: Column(
             crossAxisAlignment: AlignItems.center,
             children: [
@@ -122,7 +100,8 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        FloatingIconLink(
+        _FloatingIconLink(
+          link: '#',
           child: Column(
             crossAxisAlignment: AlignItems.center,
             children: [
@@ -131,7 +110,8 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        FloatingIconLink(
+        _FloatingIconLink(
+          link: '#',
           child: Column(
             crossAxisAlignment: AlignItems.center,
             children: [
@@ -145,12 +125,13 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class FloatingIconLink extends StatelessComponent {
-  const FloatingIconLink({
-    super.key,
+class _FloatingIconLink extends StatelessComponent {
+  const _FloatingIconLink({
+    required this.link,
     required this.child,
   });
 
+  final String link;
   final Component child;
 
   @override
@@ -165,30 +146,7 @@ class FloatingIconLink extends StatelessComponent {
         textDecoration: TextDecoration.none,
         color: Colors.white,
       ),
-      href: '#',
-      [child],
-    );
-  }
-}
-
-class WhiteBorder extends StatelessComponent {
-  const WhiteBorder({
-    super.key,
-    required this.child,
-  });
-
-  final Component child;
-
-  @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-      styles: Styles(
-        border: Border(
-          style: BorderStyle.solid,
-          color: Colors.white,
-          width: Unit.pixels(2.0),
-        ),
-      ),
+      href: link,
       [child],
     );
   }

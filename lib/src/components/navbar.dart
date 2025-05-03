@@ -1,51 +1,34 @@
+import 'package:fc_ai_circle/src/components/take_survey.dart';
 import 'package:jaspr/browser.dart';
 
 class Navbar extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield DomComponent(
-      tag: 'nav',
-      classes: 'navbar',
-      children: [
-        DomComponent(
-          tag: 'div',
-          classes: 'container',
-          children: [
-            DomComponent(
-              tag: 'a',
-              attributes: {'href': '#'},
-              classes: 'navbar-brand',
-              child: RawText('Flutter Community<br>AI Circle'),
-            ),
-            DomComponent(
-              tag: 'div',
-              classes: 'nav-links',
-              children: [
-                _navLink('Home', '#'),
-                _navLink('Forum', '#forum'),
-                _navLink('YouTube', '#youtube'),
-                _navLink('GitHub', '#github'),
-                _navLink('Docs', '#docs'),
-              ],
-            ),
-            DomComponent(
-              tag: 'a',
-              classes: 'cta_button',
-              attributes: {'href': '#'},
-              child: Text('Take the Survey'),
-            ),
+    yield nav(classes: 'navbar', [
+      div(classes: 'container', [
+        a(
+          href: '/',
+          classes: 'navbar-brand',
+          [
+            img(
+              src: '/images/logo_1x.png',
+              alt: 'Flutter Community AI Circle',
+            )
           ],
         ),
-      ],
-    );
-  }
-
-  Component _navLink(String text, String href) {
-    return DomComponent(
-      tag: 'a',
-      attributes: {'href': href},
-      classes: 'nav-link',
-      child: Text(text),
-    );
+        div(
+          classes: 'nav-links',
+          [
+            a(href: '/', classes: 'nav-link', [text('Home')]),
+            a(href: '/starters', classes: 'nav-link', [text('Starters')]),
+            a(href: '/builders', classes: 'nav-link', [text('Builders')]),
+            a(href: '/youtube', classes: 'nav-link', [text('YouTube')]),
+            a(href: '/github', classes: 'nav-link', [text('GitHub')]),
+            a(href: '/forum', classes: 'nav-link', [text('Forum')]),
+          ],
+        ),
+        TakeSurvey(),
+      ]),
+    ]);
   }
 }

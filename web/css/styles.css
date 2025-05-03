@@ -79,9 +79,6 @@ a:hover {
     transform: translateY(-2px) scale(1.03);
     filter: brightness(1.1);
 }
-  
-
-  
 
 .secondary-button {
     display: inline-flex;
@@ -92,7 +89,6 @@ a:hover {
     border-radius: var(--border-radius);
     color: var(--text-color);
     font-weight: 600;
-    font-size: 18px;
     transition: all var(--transition-speed);
 }
 
@@ -250,6 +246,7 @@ footer .copyright {
 footer .social-links {
     display: flex;
     gap: var(--spacing-md);
+    font-size: 32px;
 }
 
 footer h3 {
@@ -366,7 +363,7 @@ footer a:hover {
 
 /* Animation Hints - for future implementation */
 .section-title {
-    /* 
+    /*
     TODO: Implement scroll-based animations
     Add fade-in and slide-up animation when section comes into viewport
     Example:
