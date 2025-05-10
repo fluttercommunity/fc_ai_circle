@@ -8,6 +8,7 @@ class ContentSection extends StatelessComponent {
     this.emoji,
     this.description,
     this.contentPadding = true,
+    this.elevated = false,
     required this.children,
   });
 
@@ -16,13 +17,14 @@ class ContentSection extends StatelessComponent {
   final String? emoji;
   final String? description;
   final bool contentPadding;
+  final bool elevated;
   final List<Component> children;
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield section(
       id: id,
-      classes: 'content-section',
+      classes: ['content-section', if (elevated) 'elevated-section'].join(' '),
       attributes: {'role': 'region', 'aria-label': title},
       [
         div(
@@ -56,15 +58,21 @@ class ContentCard extends StatelessComponent {
     super.key,
     required this.children,
     this.elevated = false,
+    this.animateCta = false,
   });
 
   final List<Component> children;
   final bool elevated;
+  final bool animateCta;
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(
-      classes: ['content-card', if (elevated) 'elevated'].join(' '),
+      classes: [
+        'content-card',
+        if (elevated) 'elevated',
+        if (animateCta) 'animate-cta',
+      ].where((c) => c.isNotEmpty).join(' '),
       children,
     );
   }
@@ -75,15 +83,17 @@ class EmojiCallout extends StatelessComponent {
     super.key,
     required this.emoji,
     required this.children,
+    this.blurred = true,
   });
 
   final String emoji;
   final List<Component> children;
+  final bool blurred;
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(
-      classes: 'emoji-callout',
+      classes: ['emoji-callout', if (blurred) 'blurred'].join(' '),
       [
         span(classes: 'emoji', [text(emoji)]),
         div(classes: 'emoji-content', children),

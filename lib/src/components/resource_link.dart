@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:html' as html;
 import 'package:jaspr/browser.dart';
 
 enum CardVariant {
@@ -63,6 +65,10 @@ class ResourceLink extends StatelessComponent {
       [
         div(
           classes: variantClasses.join(' '),
+          attributes: {
+            // Add a data attribute for card height calculation in masonry grid
+            'data-card-height': '${description != null ? (description!.length ~/ 2) + 120 : 80}',
+          },
           [
             span(classes: 'resource-emoji', [text(emoji)]),
             div(
@@ -76,7 +82,10 @@ class ResourceLink extends StatelessComponent {
                     'rel': 'noopener noreferrer',
                   },
                   classes: 'resource-title',
-                  [text(title)],
+                  [
+                    text(title),
+                    // The arrow is now added via CSS :after pseudo-element
+                  ],
                 ),
                 if (description != null && variant != CardVariant.compact)
                   p(
@@ -100,6 +109,7 @@ class ResourceCategory extends StatelessComponent {
     this.accent = CategoryAccent.none,
     this.useGrid = false,
     this.useHorizontalScroll = false,
+    this.useMasonryGrid = false,
   });
 
   final String title;
@@ -107,10 +117,12 @@ class ResourceCategory extends StatelessComponent {
   final CategoryAccent accent;
   final bool useGrid;
   final bool useHorizontalScroll;
+  final bool useMasonryGrid;
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     final categoryClasses = <String>['resource-category'];
+    final String containerId = 'scrollable-${DateTime.now().millisecondsSinceEpoch}';
 
     switch (accent) {
       case CategoryAccent.none:
@@ -140,8 +152,64 @@ class ResourceCategory extends StatelessComponent {
         h3(classes: 'category-title', [text(title)]),
         if (useHorizontalScroll)
           div(
-            classes: 'scrollable-container',
+            classes: 'scrollable-container dynamic-scroll-buttons',
+            attributes: {
+              'id': containerId,
+              // Add the check overflow logic as an onMount script attribute
+              'data-onrender': '''
+                const container = document.getElementById('$containerId');
+                if (container) {
+                  const items = container.querySelector('.scrollable-items');
+                  const leftBtn = container.querySelector('.scroll-nav-left');
+                  const rightBtn = container.querySelector('.scroll-nav-right');
+                  
+                  function checkOverflow() {
+                    if (items && leftBtn && rightBtn) {
+                      const hasOverflow = items.scrollWidth > items.clientWidth;
+                      leftBtn.style.display = hasOverflow ? 'flex' : 'none';
+                      rightBtn.style.display = hasOverflow ? 'flex' : 'none';
+                    }
+                  }
+                  
+                  // Check on load
+                  checkOverflow();
+                  
+                  // Check on resize
+                  window.addEventListener('resize', checkOverflow);
+                  
+                  // Add event listeners for button clicks
+                  if (leftBtn) {
+                    leftBtn.addEventListener('click', () => {
+                      items.scrollBy({ left: -300, behavior: 'smooth' });
+                    });
+                  }
+                  
+                  if (rightBtn) {
+                    rightBtn.addEventListener('click', () => {
+                      items.scrollBy({ left: 300, behavior: 'smooth' });
+                    });
+                  }
+                }
+              '''
+            },
             [
+              // Navigation buttons (visibility controlled by JS)
+              div(
+                classes: 'scroll-nav-button scroll-nav-left',
+                attributes: {
+                  'aria-label': 'Scroll left',
+                  'style': 'display: none;', // Hidden by default
+                },
+                [text('←')],
+              ),
+              div(
+                classes: 'scroll-nav-button scroll-nav-right',
+                attributes: {
+                  'aria-label': 'Scroll right',
+                  'style': 'display: none;', // Hidden by default
+                },
+                [text('→')],
+              ),
               div(
                 classes: 'scrollable-items',
                 resources,
@@ -150,11 +218,53 @@ class ResourceCategory extends StatelessComponent {
           )
         else
           ul(
-            classes: useGrid ? 'resource-list grid-layout' : 'resource-list',
-            attributes: {'role': 'list'},
+            classes: [
+              'resource-list',
+              if (useGrid) 'grid-layout',
+              if (useMasonryGrid) 'masonry-grid',
+            ].where((c) => c.isNotEmpty).join(' '),
+            attributes: {
+              'role': 'list',
+              if (useMasonryGrid)
+                'data-onrender': '''
+                document.querySelectorAll('.masonry-grid .resource-link').forEach(card => {
+                  const height = card.getAttribute('data-card-height');
+                  if (height) {
+                    card.style.setProperty('--card-height', height);
+                  }
+                });
+              ''',
+            },
             resources,
           ),
       ],
     );
+
+    // If we're using horizontal scroll or masonry grid, also add a script to the page
+    // to look for the data-onrender attribute and execute it
+    if (useHorizontalScroll || useMasonryGrid) {
+      yield script(
+        src: '',
+        attributes: {'type': 'text/javascript'},
+        [
+          text('''
+            document.addEventListener('DOMContentLoaded', function() {
+              // Find all elements with data-onrender attribute
+              document.querySelectorAll('[data-onrender]').forEach(function(el) {
+                // Execute the script in data-onrender
+                try {
+                  const scriptContent = el.getAttribute('data-onrender');
+                  if (scriptContent) {
+                    new Function(scriptContent)();
+                  }
+                } catch (e) {
+                  console.error('Error executing onrender script:', e);
+                }
+              });
+            });
+          '''),
+        ],
+      );
+    }
   }
 }

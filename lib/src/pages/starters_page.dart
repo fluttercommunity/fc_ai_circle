@@ -280,6 +280,7 @@ class StartersPage extends StatelessComponent {
         ),
         ResourceCategory(
           title: 'Dart AI Libraries',
+          useMasonryGrid: true,
           resources: [
             ResourceLink(
               emoji: '🔗',
@@ -288,6 +289,21 @@ class StartersPage extends StatelessComponent {
                   'Intermediate. Community Dart port of LangChain, featuring clients for OpenAI, Google, Anthropic, and more.',
               link: 'https://pub.dev/packages/langchain',
               variant: CardVariant.highlighted,
+            ),
+            ResourceLink(
+              emoji: '🤖',
+              title: 'Flutter GenAI',
+              description:
+                  'Advanced. A collection of Flutter plugins for integrating generative AI capabilities into your applications.',
+              link: 'https://pub.dev/packages/langchain',
+              variant: CardVariant.blueGlow,
+            ),
+            ResourceLink(
+              emoji: '📱',
+              title: 'Dart OpenAI',
+              description:
+                  'Beginner/Intermediate. A Dart client for OpenAI API with chat, completions, embeddings and more.',
+              link: 'https://pub.dev/packages/dart_openai',
             ),
           ],
         ),
@@ -331,9 +347,11 @@ class StartersPage extends StatelessComponent {
       title: 'Contribute or Join the Circle',
       id: 'contribute',
       emoji: '🤝',
+      elevated: true,
       children: [
         ContentCard(
           elevated: true,
+          animateCta: true,
           children: [
             p([
               text(
@@ -348,7 +366,14 @@ class StartersPage extends StatelessComponent {
                 li([text('Help write docs or translate examples')]),
               ],
             ),
-            p([text('👉 Open a PR or stay tuned for our Slack/Discord — coming soon!')])
+            p([
+              span(
+                classes: 'cta_button',
+                [
+                  span([text('👉 Open a PR or stay tuned for our Slack/Discord — coming soon!')])
+                ],
+              )
+            ])
           ],
         ),
       ],
@@ -360,6 +385,7 @@ class StartersPage extends StatelessComponent {
       title: 'Coming Next',
       id: 'coming-next',
       emoji: '🧪',
+      elevated: true,
       children: [
         ContentCard(
           elevated: true,
