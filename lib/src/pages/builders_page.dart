@@ -1,5 +1,6 @@
 import 'package:fc_ai_circle/src/components/content_section.dart';
 import 'package:fc_ai_circle/src/components/page_hero.dart';
+import 'package:fc_ai_circle/src/components/resource_link.dart';
 import 'package:fc_ai_circle/src/layouts/page_layout.dart';
 import 'package:jaspr/browser.dart';
 import 'package:jaspr_router/jaspr_router.dart';
@@ -45,6 +46,7 @@ class BuildersPage extends StatelessComponent {
       id: 'about',
       children: [
         ContentCard(
+          elevated: true,
           children: [
             p([
               text(
@@ -96,6 +98,7 @@ class BuildersPage extends StatelessComponent {
             _FeatureCard(
               title: 'Share Knowledge',
               description: 'Technical articles, code examples, and implementation guides',
+              isHighlighted: true,
             ),
             _FeatureCard(
               title: 'Build Tools',
@@ -104,6 +107,7 @@ class BuildersPage extends StatelessComponent {
             _FeatureCard(
               title: 'Provide Templates',
               description: 'Ready-to-use starter projects for common AI tasks',
+              isHighlighted: true,
             ),
             _FeatureCard(
               title: 'Foster Collaboration',
@@ -119,8 +123,10 @@ class BuildersPage extends StatelessComponent {
     return ContentSection(
       title: 'Join Us',
       id: 'join',
+      emoji: '🚀',
       children: [
         ContentCard(
+          elevated: true,
           children: [
             p([
               text(
@@ -128,6 +134,25 @@ class BuildersPage extends StatelessComponent {
                 'learn, and build the future of AI-powered Flutter apps.',
               )
             ]),
+            div(
+              classes: 'coming-next-content',
+              [
+                div(
+                  classes: 'volunteer-note',
+                  [
+                    span(
+                      classes: 'emoji',
+                      [text('🔔')],
+                    ),
+                    p([
+                      text(
+                        'Sign up for our newsletter to get notified when our community platforms are ready.',
+                      ),
+                    ]),
+                  ],
+                ),
+              ],
+            ),
           ],
         ),
       ],
@@ -140,17 +165,42 @@ class BuildersPage extends StatelessComponent {
       id: 'contributors',
       emoji: '🔗',
       children: [
-        ContentCard(
-          children: [
-            p([
-              text(
-                'We welcome contributions from Flutter developers of all experience levels! '
-                'Whether you\'re an AI expert or just getting started, there\'s a place for '
-                'you in our community.',
-              )
-            ]),
-            p([text('PRs welcome - watch this space for contribution guidelines.')]),
+        ResourceCategory(
+          title: 'Ways to Contribute',
+          accent: CategoryAccent.blue,
+          useGrid: true,
+          resources: [
+            ResourceLink(
+              emoji: '📝',
+              title: 'Write Documentation',
+              description: 'Help create clear guides, examples, and tutorials.',
+              link: '#',
+              variant: CardVariant.blueGlow,
+            ),
+            ResourceLink(
+              emoji: '🧪',
+              title: 'Create Example Apps',
+              description: 'Build sample projects demonstrating AI integration patterns.',
+              link: '#',
+              variant: CardVariant.highlighted,
+            ),
+            ResourceLink(
+              emoji: '🔍',
+              title: 'Review Code',
+              description: 'Help ensure quality and consistency in our code samples.',
+              link: '#',
+            ),
+            ResourceLink(
+              emoji: '🌐',
+              title: 'Spread the Word',
+              description: 'Share our resources with your network and community.',
+              link: '#',
+            ),
           ],
+        ),
+        p(
+          classes: 'section-description',
+          [text('PRs welcome - watch this space for contribution guidelines.')],
         ),
       ],
     );
@@ -161,15 +211,17 @@ class _FeatureCard extends StatelessComponent {
   const _FeatureCard({
     required this.title,
     required this.description,
+    this.isHighlighted = false,
   });
 
   final String title;
   final String description;
+  final bool isHighlighted;
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(
-      classes: 'feature-card',
+      classes: isHighlighted ? 'feature-card highlighted' : 'feature-card',
       attributes: {'role': 'listitem'},
       [
         h3([text(title)]),

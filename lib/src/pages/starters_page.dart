@@ -69,6 +69,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Learn the foundations of LangChain and its modular architecture for building LLM-powered agents.',
               link: 'https://python.langchain.com/docs/introduction/',
+              variant: CardVariant.highlighted,
             ),
             ResourceLink(
               emoji: '📘',
@@ -83,6 +84,7 @@ class StartersPage extends StatelessComponent {
               title: 'Introducing the Model Context Protocol (Anthropic)',
               description: 'Learn how MCP standardizes interactions between LLMs and tools.',
               link: 'https://www.anthropic.com/news/model-context-protocol',
+              variant: CardVariant.blueGlow,
             ),
             ResourceLink(
               emoji: '📚',
@@ -98,6 +100,7 @@ class StartersPage extends StatelessComponent {
                   'Craig Labenz and Andrew Brogdon walk through agentic patterns, Colorist, and Firebase Genkit.',
               link:
                   'https://www.youtube.com/watch?v=eczLRG3q4V0&list=PLjxrf2q8roU1GHtc2FCHoEZr_v-LqnTZX',
+              variant: CardVariant.orangeGlow,
             ),
           ],
         ),
@@ -113,6 +116,7 @@ class StartersPage extends StatelessComponent {
       children: [
         ResourceCategory(
           title: 'LLM Integration (Gemini, OpenAI, Claude)',
+          accent: CategoryAccent.purple,
           resources: [
             ResourceLink(
               emoji: '🎨',
@@ -120,6 +124,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Beginner/Intermediate. Learn how to integrate Gemini into a Flutter app using Firebase extensions and function calling.',
               link: 'https://codelabs.developers.google.com/codelabs/flutter-gemini-colorist',
+              variant: CardVariant.highlighted,
             ),
             ResourceLink(
               emoji: '🤖',
@@ -146,6 +151,7 @@ class StartersPage extends StatelessComponent {
         ),
         ResourceCategory(
           title: 'Speech-to-Text (Whisper)',
+          accent: CategoryAccent.green,
           resources: [
             ResourceLink(
               emoji: '🎤',
@@ -153,6 +159,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Beginner. Transcribe audio to text using OpenAI\'s hosted Whisper model.',
               link: 'https://platform.openai.com/docs/guides/speech-to-text',
+              variant: CardVariant.greenGlow,
             ),
             ResourceLink(
               emoji: '📱',
@@ -165,6 +172,8 @@ class StartersPage extends StatelessComponent {
         ),
         ResourceCategory(
           title: 'Firebase Vector Search & RAG',
+          accent: CategoryAccent.orange,
+          useGrid: true,
           resources: [
             ResourceLink(
               emoji: '🔍',
@@ -172,6 +181,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Intermediate. Store and retrieve vector embeddings in Firestore for building RAG pipelines.',
               link: 'https://extensions.dev/extensions/googlecloud/firestore-vector-search',
+              variant: CardVariant.orangeGlow,
             ),
             ResourceLink(
               emoji: '⚡',
@@ -179,11 +189,13 @@ class StartersPage extends StatelessComponent {
               description:
                   'Advanced. A backend framework for building AI-driven workflows with Gemini, designed for Cloud Functions.',
               link: 'https://firebase.google.com/docs/genkit',
+              variant: CardVariant.highlighted,
             ),
           ],
         ),
         ResourceCategory(
           title: 'MCP (Model Context Protocol)',
+          accent: CategoryAccent.blue,
           resources: [
             ResourceLink(
               emoji: '🔄',
@@ -191,6 +203,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Advanced. MCP is an open protocol to connect LLMs with tools and data providers.',
               link: 'https://modelcontextprotocol.io/introduction',
+              variant: CardVariant.blueGlow,
             ),
           ],
         ),
@@ -208,6 +221,8 @@ class StartersPage extends StatelessComponent {
         ),
         ResourceCategory(
           title: 'Agentic Patterns',
+          accent: CategoryAccent.purple,
+          useGrid: true,
           resources: [
             ResourceLink(
               emoji: '🔧',
@@ -221,11 +236,14 @@ class StartersPage extends StatelessComponent {
               title: 'LLM Agents (Prompt Engineering Guide)',
               description: 'Advanced. Explore ReAct and other reasoning/action agent patterns.',
               link: 'https://www.promptingguide.ai/techniques/react',
+              variant: CardVariant.highlighted,
             ),
           ],
         ),
         ResourceCategory(
           title: 'Codelabs, Templates, and Examples',
+          accent: CategoryAccent.green,
+          useHorizontalScroll: true,
           resources: [
             ResourceLink(
               emoji: '🎨',
@@ -233,6 +251,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Intermediate. Gemini-powered Flutter app that updates the UI based on natural language prompts.',
               link: 'https://codelabs.developers.google.com/codelabs/flutter-gemini-colorist',
+              variant: CardVariant.highlighted,
             ),
             ResourceLink(
               emoji: '📚',
@@ -240,6 +259,22 @@ class StartersPage extends StatelessComponent {
               description:
                   'Intermediate/Advanced. Google\'s official examples for calling Gemini API across languages including Dart.',
               link: 'https://github.com/google-gemini/cookbook',
+              variant: CardVariant.greenGlow,
+            ),
+            ResourceLink(
+              emoji: '🚀',
+              title: 'Gemini Flutter Weather App',
+              description:
+                  'Beginner/Intermediate. Weather app powered by Gemini AI with natural language interaction.',
+              link: 'https://github.com/flutter/samples/tree/main/ai_weather',
+            ),
+            ResourceLink(
+              emoji: '📝',
+              title: 'OpenAI Translator Example',
+              description:
+                  'Intermediate. Demonstrates using OpenAI to build a multilingual translator app.',
+              link:
+                  'https://github.com/openai/openai-cookbook/blob/main/examples/How_to_build_a_multilingual_translator.md',
             ),
           ],
         ),
@@ -252,6 +287,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Intermediate. Community Dart port of LangChain, featuring clients for OpenAI, Google, Anthropic, and more.',
               link: 'https://pub.dev/packages/langchain',
+              variant: CardVariant.highlighted,
             ),
           ],
         ),
@@ -275,12 +311,14 @@ class StartersPage extends StatelessComponent {
               link:
                   'https://www.youtube.com/watch?v=eczLRG3q4V0&list=PLjxrf2q8roU1GHtc2FCHoEZr_v-LqnTZX',
               description: 'Deep dive into creating agentic Flutter applications.',
+              variant: CardVariant.compact,
             ),
             ResourceLink(
               emoji: '💬',
               title: 'Gemini Function Calling Walkthrough (Google I/O)',
               link: 'https://ai.google.dev/gemini-api/docs/function-calling',
               description: 'Learn how to implement function calling with Gemini.',
+              variant: CardVariant.compact,
             ),
           ],
         ),
@@ -295,6 +333,7 @@ class StartersPage extends StatelessComponent {
       emoji: '🤝',
       children: [
         ContentCard(
+          elevated: true,
           children: [
             p([
               text(

@@ -574,7 +574,6 @@ button:focus-visible {
 
 .resource-link:hover {
     transform: translateY(-2px);
-    border-color: var(--accent-color);
     box-shadow: 0 0 20px var(--shadow-color);
 }
 
@@ -604,20 +603,246 @@ button:focus-visible {
 }
 
 .resource-category {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    position: relative;
 }
 
+/* Category accent colors - using theme variables */
+.resource-category.purple-accent {
+    border-left: 3px solid var(--accent-color);
+    padding-left: var(--spacing-md);
+}
+
+.resource-category.blue-accent {
+    border-left: 3px solid #4e9fff;
+    padding-left: var(--spacing-md);
+}
+
+.resource-category.green-accent {
+    border-left: 3px solid #57ffab;
+    padding-left: var(--spacing-md);
+}
+
+.resource-category.orange-accent {
+    border-left: 3px solid #ff9f4e;
+    padding-left: var(--spacing-md);
+}
+
+/* Enhanced section titles */
 .category-title {
     font-size: 24px;
     margin-bottom: var(--spacing-md);
     color: var(--accent-color);
     font-weight: 600;
+    display: flex;
+    align-items: center;
 }
 
-.resource-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.category-title:after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
+    flex: 1;
+    margin-left: var(--spacing-md);
+    opacity: 0.3;
+}
+
+/* Grid layout for resource lists */
+.resource-list.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+/* Card variants - consolidating shared styles */
+.resource-link {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+    transition: all var(--transition-speed);
+    border: 1px solid transparent;
+}
+
+.resource-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--shadow-color);
+}
+
+/* Highlighted variant */
+.resource-link.highlighted {
+    box-shadow: 0 0 15px rgba(171, 87, 255, 0.15);
+    border: 1px solid rgba(171, 87, 255, 0.2);
+    background-color: rgba(171, 87, 255, 0.03);
+}
+
+.resource-link.highlighted:hover {
+    box-shadow: 0 0 20px rgba(171, 87, 255, 0.3);
+    border-color: rgba(171, 87, 255, 0.4);
+}
+
+/* Compact variant */
+.resource-link.compact {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.resource-link.compact .resource-emoji {
+    font-size: 18px;
+    min-width: 24px;
+}
+
+.resource-link.compact .resource-title {
+    margin-bottom: 0;
+}
+
+/* Color variant styles */
+.resource-link.blue-glow {
+    box-shadow: 0 0 15px rgba(78, 159, 255, 0.15);
+    border: 1px solid rgba(78, 159, 255, 0.2);
+    background-color: rgba(78, 159, 255, 0.03);
+}
+
+.resource-link.blue-glow:hover {
+    box-shadow: 0 0 20px rgba(78, 159, 255, 0.3);
+    border-color: rgba(78, 159, 255, 0.4);
+}
+
+.resource-link.green-glow {
+    box-shadow: 0 0 15px rgba(87, 255, 171, 0.15);
+    border: 1px solid rgba(87, 255, 171, 0.2);
+    background-color: rgba(87, 255, 171, 0.03);
+}
+
+.resource-link.green-glow:hover {
+    box-shadow: 0 0 20px rgba(87, 255, 171, 0.3);
+    border-color: rgba(87, 255, 171, 0.4);
+}
+
+.resource-link.orange-glow {
+    box-shadow: 0 0 15px rgba(255, 159, 78, 0.15);
+    border: 1px solid rgba(255, 159, 78, 0.2);
+    background-color: rgba(255, 159, 78, 0.03);
+}
+
+.resource-link.orange-glow:hover {
+    box-shadow: 0 0 20px rgba(255, 159, 78, 0.3);
+    border-color: rgba(255, 159, 78, 0.4);
+}
+
+/* Scrollable container improvements */
+.scrollable-container {
+    overflow-x: auto;
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--accent-color) transparent; /* Firefox */
+    position: relative;
+}
+
+/* Fade gradient at right edge */
+.scrollable-container:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(90deg, transparent, var(--background));
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Only show arrow indicator when container is scrollable */
+.scrollable-container:after {
+    content: '→';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color);
+    font-size: 20px;
+    opacity: 0.7;
+    z-index: 2;
+    pointer-events: none;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.7; }
+}
+
+/* Scrollbar styling */
+.scrollable-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.scrollable-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+
+.scrollable-container .scrollable-items {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) 0;
+}
+
+.scrollable-container .resource-link {
+    min-width: 280px;
+    max-width: 350px;
+    flex: 0 0 auto;
+}
+
+/* Feature card improvements */
+.feature-card.highlighted {
+    box-shadow: 0 0 15px rgba(171, 87, 255, 0.15);
+    border: 1px solid rgba(171, 87, 255, 0.2);
+    background-color: rgba(171, 87, 255, 0.03);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .resource-list.grid-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .resource-category.purple-accent,
+    .resource-category.blue-accent,
+    .resource-category.green-accent,
+    .resource-category.orange-accent {
+        border-left-width: 2px;
+        padding-left: var(--spacing-sm);
+    }
+    
+    .category-title {
+        font-size: 20px;
+    }
+    
+    .category-title:after {
+        margin-left: var(--spacing-sm);
+    }
+    
+    .resource-link {
+        padding: var(--spacing-sm);
+    }
+    
+    .scrollable-container:after {
+        right: 5px;
+        font-size: 16px;
+    }
 }
 
 /* Emoji callout */
@@ -715,4 +940,11 @@ button:focus-visible {
 .volunteer-note p {
     margin: 0;
     color: var(--secondary-text);
+}
+
+/* Resource lists */
+.resource-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
