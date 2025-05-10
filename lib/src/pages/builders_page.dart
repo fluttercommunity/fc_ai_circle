@@ -26,6 +26,7 @@ class BuildersPage extends StatelessComponent {
         _buildAboutSection(),
         _buildMissionSection(),
         _buildWhatWeDoSection(),
+        _buildToolkitSection(),
         _buildJoinSection(),
         _buildContributorsSection(),
       ],
@@ -37,6 +38,16 @@ class BuildersPage extends StatelessComponent {
       title: 'Builders',
       description: 'An open-source, volunteer-led community focused on integrating AI capabilities '
           'into Flutter applications.',
+      callout: EmojiCallout(
+        emoji: '🚀',
+        children: [
+          p([
+            text(
+              'Join us in creating agentic Flutter applications with advanced LLM integration, multimodal processing, and cutting-edge tools.',
+            ),
+          ]),
+        ],
+      ),
     );
   }
 
@@ -44,6 +55,8 @@ class BuildersPage extends StatelessComponent {
     return ContentSection(
       title: 'About Us',
       id: 'about',
+      emoji: '🌟',
+      description: 'We connect Flutter developers building with modern AI capabilities.',
       children: [
         ContentCard(
           elevated: true,
@@ -99,19 +112,89 @@ class BuildersPage extends StatelessComponent {
               title: 'Share Knowledge',
               description: 'Technical articles, code examples, and implementation guides',
               isHighlighted: true,
+              emoji: '📚',
             ),
             _FeatureCard(
               title: 'Build Tools',
               description: 'Open-source packages and utilities to simplify AI integration',
+              emoji: '🔧',
             ),
             _FeatureCard(
               title: 'Provide Templates',
               description: 'Ready-to-use starter projects for common AI tasks',
               isHighlighted: true,
+              emoji: '📋',
             ),
             _FeatureCard(
               title: 'Foster Collaboration',
               description: 'Connect developers working on similar challenges',
+              emoji: '🤝',
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Component _buildToolkitSection() {
+    return ContentSection(
+      title: 'Builder\'s Toolkit',
+      id: 'toolkit',
+      emoji: '🧰',
+      description: 'Resources and tools to help you build agentic Flutter applications.',
+      children: [
+        ResourceCategory(
+          title: 'Essential Tools',
+          accent: CategoryAccent.purple,
+          useGrid: true,
+          resources: [
+            ResourceLink(
+              emoji: '🔄',
+              title: 'Function Calling Patterns',
+              description: 'Reference implementations of function calling with Gemini and Claude.',
+              link: '#',
+              variant: CardVariant.highlighted,
+            ),
+            ResourceLink(
+              emoji: '🔍',
+              title: 'RAG Implementation Guide',
+              description: 'Step-by-step guide to implementing retrieval-augmented generation.',
+              link: '#',
+              variant: CardVariant.blueGlow,
+            ),
+          ],
+        ),
+        ResourceCategory(
+          title: 'Advanced Workflows',
+          accent: CategoryAccent.green,
+          useHorizontalScroll: true,
+          resources: [
+            ResourceLink(
+              emoji: '🧠',
+              title: 'Agent Orchestration',
+              description: 'Patterns for coordinating multiple AI agents in a Flutter app.',
+              link: '#',
+              variant: CardVariant.highlighted,
+            ),
+            ResourceLink(
+              emoji: '📱',
+              title: 'On-Device LLM Integration',
+              description: 'Guide to running smaller language models locally in Flutter.',
+              link: '#',
+              variant: CardVariant.greenGlow,
+            ),
+            ResourceLink(
+              emoji: '🔊',
+              title: 'Voice Input Processing',
+              description: 'Integrating speech recognition with LLM processing pipelines.',
+              link: '#',
+            ),
+            ResourceLink(
+              emoji: '📷',
+              title: 'Vision + LLM',
+              description: 'Combining image processing with language model understanding.',
+              link: '#',
+              variant: CardVariant.orangeGlow,
             ),
           ],
         ),
@@ -123,10 +206,12 @@ class BuildersPage extends StatelessComponent {
     return ContentSection(
       title: 'Join Us',
       id: 'join',
-      emoji: '🚀',
+      emoji: '✨',
+      elevated: true,
       children: [
         ContentCard(
           elevated: true,
+          animateCta: true,
           children: [
             p([
               text(
@@ -151,6 +236,18 @@ class BuildersPage extends StatelessComponent {
                     ]),
                   ],
                 ),
+                div(
+                  classes: 'buttons-container',
+                  [
+                    a(
+                      href: '#',
+                      classes: 'cta_button',
+                      [
+                        span([text('Join the Community')]),
+                      ],
+                    ),
+                  ],
+                ),
               ],
             ),
           ],
@@ -164,6 +261,7 @@ class BuildersPage extends StatelessComponent {
       title: 'Want to Contribute?',
       id: 'contributors',
       emoji: '🔗',
+      elevated: true,
       children: [
         ResourceCategory(
           title: 'Ways to Contribute',
@@ -198,9 +296,22 @@ class BuildersPage extends StatelessComponent {
             ),
           ],
         ),
-        p(
-          classes: 'section-description',
-          [text('PRs welcome - watch this space for contribution guidelines.')],
+        ContentCard(
+          children: [
+            p(
+              classes: 'section-description',
+              [text('PRs welcome - watch this space for contribution guidelines.')],
+            ),
+            p([
+              text('Check out our '),
+              a(
+                href: '/starters',
+                classes: 'highlight-link',
+                [text('Starters')],
+              ),
+              text(' section for inspiration and examples to build upon.'),
+            ]),
+          ],
         ),
       ],
     );
@@ -212,11 +323,13 @@ class _FeatureCard extends StatelessComponent {
     required this.title,
     required this.description,
     this.isHighlighted = false,
+    this.emoji,
   });
 
   final String title;
   final String description;
   final bool isHighlighted;
+  final String? emoji;
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
@@ -224,7 +337,10 @@ class _FeatureCard extends StatelessComponent {
       classes: isHighlighted ? 'feature-card highlighted' : 'feature-card',
       attributes: {'role': 'listitem'},
       [
-        h3([text(title)]),
+        h3([
+          if (emoji != null) span(classes: 'feature-emoji', [text('$emoji ')]),
+          text(title),
+        ]),
         p([text(description)]),
       ],
     );
