@@ -379,3 +379,128 @@ footer a:hover, a.selected {
     }
     */
 }
+
+/* Category sections */
+.category-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.category-section h3 {
+    font-size: 28px;
+    margin-bottom: var(--spacing-md);
+    color: var(--accent-color);
+}
+
+.category-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-section li {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed);
+}
+
+.category-section li:hover {
+    transform: translateX(10px);
+    box-shadow: 0 0 20px var(--shadow-color);
+}
+
+.category-section a {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.category-section a:hover {
+    color: var(--text-color);
+}
+
+/* Blockquote styles */
+blockquote {
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-md);
+    border-left: 4px solid var(--accent-color);
+    background-color: var(--card-bg);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+blockquote p {
+    margin: 0;
+    font-style: italic;
+    color: var(--secondary-text);
+}
+
+/* Section spacing */
+section {
+    padding: var(--spacing-xl) 0;
+}
+
+section:first-child {
+    padding-top: 0;
+}
+
+section:last-child {
+    padding-bottom: 0;
+}
+
+/* Focus styles for better keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: var(--border-radius);
+}
+
+/* Improve focus visibility for interactive elements */
+.feature-card:focus-within,
+.category-section li:focus-within {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: var(--border-radius);
+}
+
+/* Ensure focus styles are visible in high contrast mode */
+@media (forced-colors: active) {
+    a:focus-visible,
+    button:focus-visible,
+    .feature-card:focus-within,
+    .category-section li:focus-within {
+        outline: 2px solid CanvasText;
+    }
+}
+
+/* Page title styling */
+.page-title {
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.page-title .title-text {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    display: inline-block;
+}
+
+/* Remove the gradient underline effect */
+/* 
+.page-title .title-text::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-gradient);
+    transform: scaleX(0.8);
+    opacity: 0.5;
+    border-radius: 2px;
+}
+*/
