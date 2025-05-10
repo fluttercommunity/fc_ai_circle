@@ -24,8 +24,8 @@ class _SiteState extends State<Website> {
     yield Router(
       routes: [
         ...HomePage.route(),
-        StartersPage.route(),
-        BuildersPage.route(),
+        ...StartersPage.route(),
+        ...BuildersPage.route(),
       ],
     );
   }
