@@ -1,3 +1,4 @@
+import 'package:fc_ai_circle/src/app/external_links.dart';
 import 'package:jaspr/browser.dart';
 
 class TakeSurvey extends StatelessComponent {
@@ -6,7 +7,8 @@ class TakeSurvey extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield a(
-      href: '/take_survey',
+      href: ExternalLink.surveyCommunity.url,
+      target: Target.blank,
       classes: 'cta_button',
       [text('Take the Survey')],
     );

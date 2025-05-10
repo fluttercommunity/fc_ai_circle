@@ -1,4 +1,8 @@
+import 'package:fc_ai_circle/src/app/external_links.dart';
 import 'package:jaspr/browser.dart';
+import 'package:jaspr_router/jaspr_router.dart';
+import 'package:fc_ai_circle/src/pages/builders_page.dart';
+import 'package:fc_ai_circle/src/pages/starters_page.dart';
 
 class Footer extends StatelessComponent {
   @override
@@ -8,19 +12,25 @@ class Footer extends StatelessComponent {
         div(classes: 'footer-grid', [
           FooterColumn(
             title: 'Community',
-            links: ['About', 'Mission', 'Join the Circle', 'Start Contributing'],
+            links: [
+              (path: '#', label: 'What is Agentic Flutter?'),
+              (path: '#', label: 'Take the contributors survey'),
+            ],
           ),
           FooterColumn(
             title: 'Resources',
-            links: ['Docs', 'Templates', 'Survey', 'Events'],
+            links: [
+              (path: StartersPage.path, label: 'Starters'),
+              (path: BuildersPage.path, label: 'Builders'),
+            ],
           ),
-          FooterColumn(
-            title: 'Channels',
-            links: ['YouTube', 'Twitter', 'Forum', 'GitHub'],
-          ),
+          div([]),
           FooterColumn(
             title: 'Legal',
-            links: ['Privacy', 'Terms', 'Code of Conduct', 'Licensing'],
+            links: [
+              (path: '#', label: 'Privacy Policy'),
+              (path: '#', label: 'Code of Conduct'),
+            ],
           ),
         ]),
         div(classes: 'footer-bottom', [
@@ -30,24 +40,29 @@ class Footer extends StatelessComponent {
           ),
           div(classes: 'social-links', [
             SocialLink(
+              link: ExternalLink.socialBlueSky,
               icon: 'fa-bluesky',
               label: 'BlueSky',
-              href: 'https://bsky.app/profile/fluttercommunity.dev',
             ),
             SocialLink(
+              link: ExternalLink.socialTwitterX,
               icon: 'fa-x-twitter',
               label: 'Twitter',
-              href: 'https://x.com/fluttercomm',
             ),
             SocialLink(
+              link: ExternalLink.socialMastodon,
               icon: 'fa-mastodon',
               label: 'Mastodon',
-              href: 'https://fluttercommunity.social/@FlutterComm',
             ),
             SocialLink(
+              link: ExternalLink.socialGitHub,
               icon: 'fa-github',
               label: 'GitHub',
-              href: 'https://github.com/fluttercommunity/fc_ai_circle',
+            ),
+            SocialLink(
+              link: ExternalLink.socialMedium,
+              icon: 'fa-medium',
+              label: 'Medium',
             ),
           ]),
         ]),
@@ -64,7 +79,7 @@ class FooterColumn extends StatelessComponent {
   });
 
   final String title;
-  final List<String> links;
+  final List<({String path, String label})> links;
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
@@ -73,7 +88,11 @@ class FooterColumn extends StatelessComponent {
       ul([
         for (var link in links) //
           li([
-            a(href: '#', [text(link)])
+            a(
+              href: link.path,
+              onClick: () => Router.of(context).push(link.path),
+              [text(link.label)],
+            )
           ]),
       ]),
     ]);
@@ -83,12 +102,12 @@ class FooterColumn extends StatelessComponent {
 class SocialLink extends StatefulComponent {
   const SocialLink({
     super.key,
-    required this.href,
+    required this.link,
     required this.icon,
     required this.label,
   });
 
-  final String href;
+  final ExternalLink link;
   final String icon;
   final String label;
 
@@ -102,7 +121,7 @@ class _SocialLinkState extends State<SocialLink> {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield a(
-      href: component.href,
+      href: component.link.url,
       target: Target.blank,
       attributes: {
         'title': component.label,

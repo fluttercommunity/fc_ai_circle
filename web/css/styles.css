@@ -32,6 +32,7 @@ body > * {
     --spacing-lg: 40px;
     --spacing-xl: 60px;
     --transition-speed: 0.3s;
+    --navbar-height: 120px;
 }
 
 body {
@@ -39,12 +40,6 @@ body {
     background-color: var(--background);
     color: var(--text-color);
     line-height: 1.5;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
 }
 
 a {
@@ -55,6 +50,13 @@ a {
 
 a:hover {
     color: var(--accent-color);
+}
+
+/* enforces max width on page sections */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
 /* Button styles */
@@ -99,15 +101,16 @@ a:hover {
     transform: translateY(-2px);
 }
 
-/* Home page styles */
-.home-page {
+
+.page-layout {
     width: 100%;
+    margin-top: var(--navbar-height);
 }
 
 /* Hero section */
 .hero {
     padding-top: 120px;
-    min-height: 90vh;
+    min-height: 65vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -270,7 +273,7 @@ footer a {
     transition: color var(--transition-speed);
 }
 
-footer a:hover {
+footer a:hover, a.selected {
     color: var(--accent-color);
 }
 
@@ -321,6 +324,10 @@ footer a:hover {
 
 .nav-link:hover::after {
     width: 100%;
+}
+
+.nav-selected {
+    color: var(--accent-color);
 }
 
 /* FAQ Section */

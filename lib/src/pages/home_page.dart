@@ -1,10 +1,13 @@
 import 'package:fc_ai_circle/src/components/take_survey.dart';
 import 'package:fc_ai_circle/src/layouts/page_layout.dart';
+import 'package:fc_ai_circle/src/pages/builders_page.dart';
 import 'package:jaspr/browser.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class HomePage extends StatelessComponent {
   const HomePage({super.key});
+
+  static const path = '/';
 
   static Iterable<Route> route() sync* {
     yield Route(
@@ -22,16 +25,12 @@ class HomePage extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield PageLayout(
-      child: DomComponent(
-        tag: 'div',
-        classes: 'home-page',
-        children: [
-          _HeroSection(),
-          _FeaturesSection(),
-          _CtaSection(),
-          _FaqSection(),
-        ],
-      ),
+      children: [
+        _HeroSection(),
+        _FeaturesSection(),
+        _CtaSection(),
+        _FaqSection(),
+      ],
     );
   }
 }
@@ -53,7 +52,8 @@ class _HeroSection extends StatelessComponent {
         div(classes: 'buttons-container', [
           a(
             classes: 'cta_button',
-            href: '/builders',
+            href: BuildersPage.path,
+            onClick: () => Router.of(context).push(BuildersPage.path),
             [text('Explore Builders')],
           ),
           a(

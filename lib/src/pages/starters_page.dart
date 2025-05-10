@@ -5,9 +5,11 @@ import 'package:jaspr_router/jaspr_router.dart';
 class StartersPage extends StatelessComponent {
   const StartersPage({super.key});
 
+  static var path = '/starters';
+
   static Route route() {
     return Route(
-      path: '/starters',
+      path: path,
       title: 'Starters',
       builder: (BuildContext context, RouteState state) => StartersPage(),
     );
@@ -16,9 +18,9 @@ class StartersPage extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield PageLayout(
-      child: h1(
-        [text('Starters')],
-      ),
+      children: [
+        h1([text('Starters')]),
+      ],
     );
   }
 }

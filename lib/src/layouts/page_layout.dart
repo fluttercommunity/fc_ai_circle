@@ -5,19 +5,21 @@ import 'package:jaspr/browser.dart';
 class PageLayout extends StatelessComponent {
   const PageLayout({
     super.key,
-    required this.child,
+    required this.children,
   });
 
-  final Component child;
+  final Iterable<Component> children;
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield DomComponent(
-      tag: 'div',
-      classes: 'app-wrapper',
-      children: [
+    yield div(
+      classes: 'site-frame',
+      [
         Navbar(),
-        child,
+        div(
+          classes: 'page-layout container',
+          [...children],
+        ),
         Footer(),
       ],
     );
