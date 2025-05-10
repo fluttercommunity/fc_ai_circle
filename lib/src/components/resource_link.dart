@@ -70,7 +70,7 @@ class ResourceLink extends StatelessComponent {
             'data-card-height': '${description != null ? (description!.length ~/ 2) + 120 : 80}',
           },
           [
-            span(classes: 'resource-emoji', [text(emoji)]),
+            span(classes: 'resource-emoji', attributes: {'aria-hidden': 'true'}, [text(emoji)]),
             div(
               classes: 'resource-content',
               [
@@ -198,7 +198,9 @@ class ResourceCategory extends StatelessComponent {
                 classes: 'scroll-nav-button scroll-nav-left',
                 attributes: {
                   'aria-label': 'Scroll left',
-                  'style': 'display: none;', // Hidden by default
+                  'style':
+                      'display: none; background-color: var(--primary-color); color: white;', // Hidden by default, improved contrast
+                  'title': 'Scroll to see previous items',
                 },
                 [text('←')],
               ),
@@ -206,7 +208,9 @@ class ResourceCategory extends StatelessComponent {
                 classes: 'scroll-nav-button scroll-nav-right',
                 attributes: {
                   'aria-label': 'Scroll right',
-                  'style': 'display: none;', // Hidden by default
+                  'style':
+                      'display: none; background-color: var(--primary-color); color: white;', // Hidden by default, improved contrast
+                  'title': 'Scroll to see more items',
                 },
                 [text('→')],
               ),

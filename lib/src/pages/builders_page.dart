@@ -153,6 +153,7 @@ class BuildersPage extends StatelessComponent {
               title: 'Function Calling Patterns',
               description: 'Reference implementations of function calling with Gemini and Claude.',
               link: '#',
+              // TODO: Add link to function calling patterns documentation once available
               variant: CardVariant.highlighted,
             ),
             ResourceLink(
@@ -160,6 +161,7 @@ class BuildersPage extends StatelessComponent {
               title: 'RAG Implementation Guide',
               description: 'Step-by-step guide to implementing retrieval-augmented generation.',
               link: '#',
+              // TODO: Add link to RAG implementation guide once published
               variant: CardVariant.blueGlow,
             ),
           ],
@@ -174,6 +176,7 @@ class BuildersPage extends StatelessComponent {
               title: 'Agent Orchestration',
               description: 'Patterns for coordinating multiple AI agents in a Flutter app.',
               link: '#',
+              // TODO: Add link to agent orchestration documentation once available
               variant: CardVariant.highlighted,
             ),
             ResourceLink(
@@ -181,6 +184,7 @@ class BuildersPage extends StatelessComponent {
               title: 'On-Device LLM Integration',
               description: 'Guide to running smaller language models locally in Flutter.',
               link: '#',
+              // TODO: Add link to on-device LLM integration guide once published
               variant: CardVariant.greenGlow,
             ),
             ResourceLink(
@@ -188,12 +192,14 @@ class BuildersPage extends StatelessComponent {
               title: 'Voice Input Processing',
               description: 'Integrating speech recognition with LLM processing pipelines.',
               link: '#',
+              // TODO: Add link to voice processing tutorial once available
             ),
             ResourceLink(
               emoji: '📷',
               title: 'Vision + LLM',
               description: 'Combining image processing with language model understanding.',
               link: '#',
+              // TODO: Add link to vision+LLM integration guide once published
               variant: CardVariant.orangeGlow,
             ),
           ],
@@ -241,6 +247,7 @@ class BuildersPage extends StatelessComponent {
                   [
                     a(
                       href: '#',
+                      // TODO: Add link to community signup form once available
                       classes: 'cta_button',
                       [
                         span([text('Join the Community')]),
@@ -273,6 +280,7 @@ class BuildersPage extends StatelessComponent {
               title: 'Write Documentation',
               description: 'Help create clear guides, examples, and tutorials.',
               link: '#',
+              // TODO: Add link to documentation contribution guidelines once available
               variant: CardVariant.blueGlow,
             ),
             ResourceLink(
@@ -280,6 +288,7 @@ class BuildersPage extends StatelessComponent {
               title: 'Create Example Apps',
               description: 'Build sample projects demonstrating AI integration patterns.',
               link: '#',
+              // TODO: Add link to example app contribution guidelines once available
               variant: CardVariant.highlighted,
             ),
             ResourceLink(
@@ -287,12 +296,14 @@ class BuildersPage extends StatelessComponent {
               title: 'Review Code',
               description: 'Help ensure quality and consistency in our code samples.',
               link: '#',
+              // TODO: Add link to code review guidelines once published
             ),
             ResourceLink(
               emoji: '🌐',
               title: 'Spread the Word',
               description: 'Share our resources with your network and community.',
               link: '#',
+              // TODO: Add link to community outreach resources once available
             ),
           ],
         ),

@@ -33,7 +33,11 @@ class ContentSection extends StatelessComponent {
             h2(
               classes: 'section-title',
               [
-                if (emoji != null) text('$emoji '),
+                if (emoji != null)
+                  span(
+                    attributes: {'aria-hidden': 'true'},
+                    [text('$emoji ')],
+                  ),
                 text(title),
               ],
             ),
@@ -92,12 +96,53 @@ class EmojiCallout extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
+    // Get a description of the emoji for screen readers
+    final String emojiDescription = _getEmojiDescription(emoji);
+
     yield div(
       classes: ['emoji-callout', if (blurred) 'blurred'].join(' '),
       [
-        span(classes: 'emoji', [text(emoji)]),
+        span(
+          classes: 'emoji',
+          attributes: {'aria-hidden': 'true'}, // Hide from screen readers as we'll describe it
+          [text(emoji)],
+        ),
+        // Add hidden text for screen readers
+        span(
+          attributes: {
+            'class': 'sr-only',
+            'role': 'presentation',
+          },
+          [text(emojiDescription)],
+        ),
         div(classes: 'emoji-content', children),
       ],
     );
+  }
+
+  // Helper method to get a description of common emojis
+  String _getEmojiDescription(String emoji) {
+    switch (emoji) {
+      case '🧠':
+        return 'Brain emoji representing knowledge or thinking';
+      case '🚀':
+        return 'Rocket emoji representing launch or fast progress';
+      case '🌟':
+        return 'Star emoji representing excellence or highlights';
+      case '🎯':
+        return 'Target emoji representing goals or mission';
+      case '📦':
+        return 'Package emoji representing products or deliverables';
+      case '🧰':
+        return 'Toolbox emoji representing toolkit or resources';
+      case '✨':
+        return 'Sparkles emoji representing new features or excitement';
+      case '🔗':
+        return 'Link emoji representing connections or contributions';
+      case '🧪':
+        return 'Test tube emoji representing experiments or tests';
+      default:
+        return 'Emoji';
+    }
   }
 }
