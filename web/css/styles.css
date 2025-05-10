@@ -504,3 +504,215 @@ button:focus-visible {
     border-radius: 2px;
 }
 */
+
+/* Linear.app style content section */
+.content-section {
+    padding: var(--spacing-xl) 0;
+    position: relative;
+}
+
+.content-section:after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.content-section:last-child:after {
+    display: none;
+}
+
+.section-content {
+    padding: var(--spacing-md) 0;
+}
+
+.section-description {
+    font-size: 18px;
+    max-width: 800px;
+    color: var(--secondary-text);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Cards */
+.content-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all var(--transition-speed);
+}
+
+.content-card.elevated {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.content-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(171, 87, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Resource links */
+.resource-link {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+    transition: all var(--transition-speed);
+    border: 1px solid transparent;
+}
+
+.resource-link:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px var(--shadow-color);
+}
+
+.resource-emoji {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+}
+
+.resource-content {
+    flex: 1;
+}
+
+.resource-title {
+    font-weight: 600;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.resource-description {
+    color: var(--secondary-text);
+    margin: 0;
+    font-size: 14px;
+}
+
+.resource-category {
+    margin-bottom: var(--spacing-lg);
+}
+
+.category-title {
+    font-size: 24px;
+    margin-bottom: var(--spacing-md);
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.resource-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Emoji callout */
+.emoji-callout {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius);
+    margin: var(--spacing-md) 0;
+}
+
+.emoji-callout .emoji {
+    font-size: 24px;
+    min-width: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.emoji-callout .emoji-content {
+    flex: 1;
+}
+
+.emoji-callout p {
+    margin: 0;
+}
+
+/* Hero improvements */
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-description {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: var(--spacing-lg);
+    color: var(--secondary-text);
+}
+
+/* Coming Next Section */
+.coming-next-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.coming-next-text {
+    font-size: 18px;
+    text-align: center;
+    margin: 0;
+}
+
+.highlight-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    padding: 0 2px;
+}
+
+.highlight-link:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-gradient);
+    transform: scaleX(0);
+    transition: transform var(--transition-speed);
+    transform-origin: right;
+}
+
+.highlight-link:hover:after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.volunteer-note {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background-color: rgba(171, 87, 255, 0.05);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--accent-color);
+}
+
+.volunteer-note .emoji {
+    font-size: 24px;
+}
+
+.volunteer-note p {
+    margin: 0;
+    color: var(--secondary-text);
+}
