@@ -295,7 +295,7 @@ class StartersPage extends StatelessComponent {
               title: 'Flutter GenAI',
               description:
                   'Advanced. A collection of Flutter plugins for integrating generative AI capabilities into your applications.',
-              link: 'https://pub.dev/packages/langchain',
+              link: 'https://pub.dev/packages/flutter_genai',
               variant: CardVariant.blueGlow,
             ),
             ResourceLink(
@@ -370,7 +370,15 @@ class StartersPage extends StatelessComponent {
               span(
                 classes: 'cta_button',
                 [
-                  span([text('👉 Open a PR or stay tuned for our Slack/Discord — coming soon!')])
+                  a(
+                    href: 'https://github.com/fluttercommunity/fc_ai_circle',
+                    target: Target.blank,
+                    attributes: {
+                      'aria-label': 'Contribute on GitHub',
+                      'rel': 'noopener noreferrer',
+                    },
+                    [text('👉 Open a PR on GitHub')],
+                  )
                 ],
               )
             ])
@@ -396,7 +404,7 @@ class StartersPage extends StatelessComponent {
                 p(
                   classes: 'coming-next-text',
                   [
-                    text('Stay tuned at '),
+                    text('✨ Stay tuned for more resources at '),
                     a(
                       href: 'https://ai.fluttercommunity.dev',
                       target: Target.blank,
