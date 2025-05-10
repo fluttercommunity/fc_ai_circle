@@ -42,7 +42,15 @@ class _HeroSection extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     yield section(classes: 'hero', [
       div(classes: 'container', [
-        h1([text('Build Agentic Flutter Experiences')]),
+        h1(
+          classes: 'page-title',
+          [
+            span(
+              classes: 'title-text',
+              [text('Build Agentic Flutter Experiences')],
+            ),
+          ],
+        ),
         p([
           text(
             'A community-powered space for developers building '
