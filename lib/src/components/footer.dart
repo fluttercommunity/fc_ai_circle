@@ -13,8 +13,8 @@ class Footer extends StatelessComponent {
           FooterColumn(
             title: 'Community',
             links: [
-              (path: '#', label: 'What is Agentic Flutter?'),
-              (path: '#', label: 'Take the contributors survey'),
+              (path: ExternalLink.youTubeAgenticQA.url, label: 'What is Agentic Flutter?'),
+              (path: ExternalLink.surveyContributors.url, label: 'Take the contributors survey'),
             ],
           ),
           FooterColumn(
@@ -88,11 +88,22 @@ class FooterColumn extends StatelessComponent {
       ul([
         for (var link in links) //
           li([
-            a(
-              href: link.path,
-              onClick: () => Router.of(context).push(link.path),
-              [text(link.label)],
-            )
+            if (link.path.startsWith('http'))
+              a(
+                href: link.path,
+                target: Target.blank,
+                attributes: {
+                  'rel': 'noopener noreferrer',
+                  'aria-label': link.label,
+                },
+                [text(link.label)],
+              )
+            else
+              a(
+                href: link.path,
+                onClick: () => Router.of(context).push(link.path),
+                [text(link.label)],
+              )
           ]),
       ]),
     ]);

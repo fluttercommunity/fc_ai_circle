@@ -1,6 +1,7 @@
 import 'package:fc_ai_circle/src/components/take_survey.dart';
 import 'package:fc_ai_circle/src/layouts/page_layout.dart';
 import 'package:fc_ai_circle/src/pages/builders_page.dart';
+import 'package:fc_ai_circle/src/app/external_links.dart';
 import 'package:jaspr/browser.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
@@ -64,13 +65,16 @@ class _HeroSection extends StatelessComponent {
             onClick: () => Router.of(context).push(BuildersPage.path),
             [text('Explore Builders')],
           ),
-          // TODO: Add link to "What is Agentic Flutter?" page once created
-          // a(
-          //   classes: 'secondary-button',
-          //   href: '#',
-          //   // TODO: Add link to "What is Agentic Flutter?" page once created
-          //   [text('What is Agentic Flutter?')],
-          // ),
+          a(
+            classes: 'secondary-button',
+            href: ExternalLink.youTubeAgenticQA.url,
+            target: Target.blank,
+            attributes: {
+              'rel': 'noopener noreferrer',
+              'aria-label': 'Learn what Agentic Flutter is',
+            },
+            [text('What is Agentic Flutter?')],
+          ),
         ]),
       ]),
     ]);
@@ -90,21 +94,20 @@ class _FeaturesSection extends StatelessComponent {
           [text('Highlights from the Flutter Community AI Circle')],
         ),
         div(classes: 'features-grid', [
-          // TODO: Add YouTube video embed for past livestream
           _FeatureCard(
             title: 'Past Livestream',
             description: 'Vibe Coding a Card Game with Norbert & Friends',
+            url: ExternalLink.youTubeVibeCoding.url,
           ),
-          // TODO: Add calendar integration or dynamic content for upcoming events
-          //  - can they add them to their calendar or directly go set a reminder?
           _FeatureCard(
-            title: 'Upcoming',
-            description: 'Humpday Q&A: Agentic Apps Spotlight',
+            title: 'Agentic Apps Spotlight',
+            description: 'Humpday Q&A: AI Special with Andrew Brogdon',
+            url: ExternalLink.youTubeAgenticQA.url,
           ),
-          // TODO: Add link to survey form/ or forms - maybe regular community one idk.
           _FeatureCard(
             title: 'Survey',
             description: 'Help shape open-source tooling for AI in Flutter',
+            url: ExternalLink.surveyCommunity.url,
           ),
         ]),
       ]),
@@ -116,20 +119,37 @@ class _FeatureCard extends StatelessComponent {
   const _FeatureCard({
     required this.title,
     required this.description,
+    this.url,
   });
 
   final String title;
   final String description;
+  final String? url;
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-      classes: 'feature-card',
-      [
-        h3([text(title)]),
-        p([text(description)]),
-      ],
-    );
+    final cardContent = [
+      h3([text(title)]),
+      p([text(description)]),
+    ];
+
+    if (url != null) {
+      yield a(
+        classes: 'feature-card feature-card-link',
+        href: url!,
+        target: Target.blank,
+        attributes: {
+          'rel': 'noopener noreferrer',
+          'aria-label': 'Open $title resource',
+        },
+        cardContent,
+      );
+    } else {
+      yield div(
+        classes: 'feature-card',
+        cardContent,
+      );
+    }
   }
 }
 
