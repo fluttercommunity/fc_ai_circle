@@ -92,6 +92,7 @@ a:hover {
     color: var(--text-color);
     font-weight: 600;
     transition: all var(--transition-speed);
+    cursor: pointer;
 }
 
 .secondary-button:hover {
@@ -120,6 +121,7 @@ a:hover {
 }
 
 /* Replace the complex animated gradient with a simple, static subtle spotlight */
+/*
 .hero:before {
     content: '';
     position: absolute;
@@ -134,7 +136,9 @@ a:hover {
     );
     /* Remove animation that causes visual noise */
     /* animation: pulse-bg 10s infinite alternate ease-in-out; */
+/*
 }
+*/
 
 /* Remove the distracting animation */
 /* @keyframes pulse-bg {

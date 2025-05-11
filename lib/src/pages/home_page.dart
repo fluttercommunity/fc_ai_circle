@@ -67,8 +67,8 @@ class _HeroSection extends StatelessComponent {
           ),
           a(
             classes: 'secondary-button',
-            href: ExternalLink.youTubeAgenticQA.url,
-            target: Target.blank,
+            href: ExternalLink.youTubeAgenticQA.url, // The direct URL
+            target: Target.blank, // Jaspr's way to open in a new tab
             attributes: {
               'rel': 'noopener noreferrer',
               'aria-label': 'Learn what Agentic Flutter is',
