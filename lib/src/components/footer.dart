@@ -3,6 +3,8 @@ import 'package:jaspr/browser.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:fc_ai_circle/src/pages/builders_page.dart';
 import 'package:fc_ai_circle/src/pages/starters_page.dart';
+import 'package:fc_ai_circle/src/pages/privacy_policy_page.dart';
+import 'package:fc_ai_circle/src/pages/code_of_conduct_page.dart';
 
 class Footer extends StatelessComponent {
   @override
@@ -28,8 +30,8 @@ class Footer extends StatelessComponent {
           FooterColumn(
             title: 'Legal',
             links: [
-              (path: '#coming-soon', label: 'Privacy Policy'),
-              (path: '#coming-soon', label: 'Code of Conduct'),
+              (path: PrivacyPolicyPage.path, label: 'Privacy Policy'),
+              (path: CodeOfConductPage.path, label: 'Code of Conduct'),
             ],
           ),
         ]),
