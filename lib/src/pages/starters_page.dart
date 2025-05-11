@@ -333,15 +333,25 @@ class StartersPage extends StatelessComponent {
               title: 'Agentic Apps with Flutter (Observable Flutter #59)',
               link:
                   'https://www.youtube.com/watch?v=eczLRG3q4V0&list=PLjxrf2q8roU1GHtc2FCHoEZr_v-LqnTZX',
-              description: 'Deep dive into creating agentic Flutter applications.',
-              variant: CardVariant.compact,
+              description:
+                  'Craig Labenz and Andrew Brogdon discuss and explore AI-powered, agentic apps in Flutter in this Observable Flutter episode.',
+              variant: CardVariant.greenGlow,
             ),
             ResourceLink(
               emoji: '💬',
-              title: 'Gemini Function Calling Walkthrough (Google I/O)',
-              link: 'https://ai.google.dev/gemini-api/docs/function-calling',
-              description: 'Learn how to implement function calling with Gemini.',
-              variant: CardVariant.compact,
+              title: 'Gemini API: Function Calling Docs',
+              link: ExternalLink.geminiFunctionCallingDocs.url,
+              description:
+                  'Official Gemini API docs on connecting models to external tools and APIs. Learn how function calling bridges natural language to real-world actions and data.',
+              variant: CardVariant.blueGlow,
+            ),
+            ResourceLink(
+              emoji: '🎥',
+              title: 'Jhin Lee on mcp_dart (Humpday Q&A)',
+              description:
+                  'GDE Jhin Lee discusses the mcp_dart package and the Model Context Protocol. (MCP segment starts at 29:54).',
+              link: ExternalLink.youTubeJhinLeeMCPHumpdayQA.url,
+              variant: CardVariant.orangeGlow,
             ),
           ],
         ),
