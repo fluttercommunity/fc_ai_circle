@@ -63,10 +63,14 @@ class ResourceLink extends StatelessComponent {
     yield li(
       attributes: {'role': 'listitem'},
       [
-        div(
+        a(
+          href: link,
+          target: Target.blank,
           classes: variantClasses.join(' '),
           attributes: {
-            // Add a data attribute for card height calculation in masonry grid
+            'role': 'article',
+            'aria-label': title + (description != null ? " - $description" : ""),
+            'rel': 'noopener noreferrer',
             'data-card-height': '${description != null ? (description!.length ~/ 2) + 120 : 80}',
           },
           [
@@ -74,17 +78,10 @@ class ResourceLink extends StatelessComponent {
             div(
               classes: 'resource-content',
               [
-                a(
-                  href: link,
-                  target: Target.blank,
-                  attributes: {
-                    'aria-label': '$title - ${description ?? ''}',
-                    'rel': 'noopener noreferrer',
-                  },
+                span(
                   classes: 'resource-title',
                   [
                     text(title),
-                    // The arrow is now added via CSS :after pseudo-element
                   ],
                 ),
                 if (description != null && variant != CardVariant.compact)

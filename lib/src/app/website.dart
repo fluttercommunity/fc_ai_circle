@@ -20,6 +20,8 @@ class _SiteState extends State<Website> {
       children: [
         link(href: '/css/fontawesome.css', rel: 'stylesheet'),
         link(href: '/css/brands.css', rel: 'stylesheet'),
+        link(href: '/css/clickable-cards.css', rel: 'stylesheet'),
+        // script(src: '/js/clickable-cards.js', attributes: {'defer': 'true'}, []), // Commented out
         // Style(styles: resetStyles)
       ],
     );
