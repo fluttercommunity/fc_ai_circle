@@ -308,6 +308,43 @@ footer a:hover, a.selected {
     color: var(--accent-color);
 }
 
+/* Styles for 'Coming soon' links in the footer */
+.footer-link.coming-soon-link {
+    color: var(--secondary-text); /* Match disabled/inactive link appearance */
+    cursor: help; /* Indicate that it provides information but isn't a direct link */
+    position: relative; /* For tooltip positioning */
+    text-decoration: none; /* Ensure no underline like active links */
+}
+
+.footer-link.coming-soon-link:hover {
+    color: var(--secondary-text); /* Keep color same on hover, no accent */
+}
+
+.footer-link.coming-soon-link[data-tooltip]:hover::after {
+    content: attr(data-tooltip); /* Display the tooltip text */
+    position: absolute;
+    bottom: 100%; /* Position above the text */
+    left: 50%;
+    transform: translateX(-50%); /* Center the tooltip */
+    margin-bottom: 5px; /* Space between text and tooltip */
+    padding: 6px 10px;
+    background-color: var(--primary-color); /* Dark background for tooltip */
+    color: var(--text-color);
+    border: 1px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    font-size: 0.85em;
+    white-space: nowrap; /* Prevent tooltip text from wrapping */
+    z-index: 10; /* Ensure tooltip is above other elements */
+    opacity: 0; /* Start hidden */
+    animation: fadeInTooltip 0.3s forwards;
+}
+
+@keyframes fadeInTooltip {
+    to {
+        opacity: 1;
+    }
+}
+
 /* Navbar styles */
 .navbar {
     position: fixed;

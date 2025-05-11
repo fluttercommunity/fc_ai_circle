@@ -28,8 +28,8 @@ class Footer extends StatelessComponent {
           FooterColumn(
             title: 'Legal',
             links: [
-              (path: '#', label: 'Privacy Policy'),
-              (path: '#', label: 'Code of Conduct'),
+              (path: '#coming-soon', label: 'Privacy Policy'),
+              (path: '#coming-soon', label: 'Code of Conduct'),
             ],
           ),
         ]),
@@ -88,7 +88,16 @@ class FooterColumn extends StatelessComponent {
       ul([
         for (var link in links) //
           li([
-            if (link.path.startsWith('http'))
+            if (link.path == '#coming-soon')
+              span(
+                classes: 'footer-link coming-soon-link',
+                attributes: {
+                  'data-tooltip': 'Coming soon',
+                  'aria-label': '${link.label} (Coming soon)'
+                },
+                [text(link.label)],
+              )
+            else if (link.path.startsWith('http'))
               a(
                 href: link.path,
                 target: Target.blank,
