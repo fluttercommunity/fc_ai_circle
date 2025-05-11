@@ -2,6 +2,7 @@ import 'package:fc_ai_circle/src/components/content_section.dart';
 import 'package:fc_ai_circle/src/components/feature_card.dart';
 import 'package:fc_ai_circle/src/components/page_hero.dart';
 import 'package:fc_ai_circle/src/components/resource_link.dart';
+import 'package:fc_ai_circle/src/components/resource_category.dart';
 import 'package:fc_ai_circle/src/components/survey_callout.dart';
 import 'package:fc_ai_circle/src/layouts/page_layout.dart';
 import 'package:fc_ai_circle/src/app/external_links.dart';
@@ -91,34 +92,27 @@ class BuildersPage extends StatelessComponent {
           useGrid: true,
           resources: [
             ResourceLink(
-              emoji: '📚',
               title: 'Accessible Resources',
               description:
                   'Create clear documentation, tutorials, and examples for Flutter developers to incorporate AI into their apps',
-              link: ExternalLink.forumCategory.url,
-              variant: CardVariant.highlighted,
+              url: ExternalLink.forumCategory.url,
             ),
             ResourceLink(
-              emoji: '🧪',
               title: 'Best Practices',
               description:
                   'Explore and share responsible AI implementation patterns with the community',
-              link: ExternalLink.youTubeAgenticQA.url,
-              variant: CardVariant.blueGlow,
+              url: ExternalLink.youTubeAgenticQA.url,
             ),
             ResourceLink(
-              emoji: '🤝',
               title: 'Supportive Environment',
               description:
                   'Build a welcoming community for experimentation, learning, and collaboration',
-              link: ExternalLink.forumChat.url,
+              url: ExternalLink.forumChat.url,
             ),
             ResourceLink(
-              emoji: '📦',
               title: 'Open Source',
               description: 'Develop starter kits, reference implementations, and shared resources',
-              link: ExternalLink.socialGitHub.url,
-              variant: CardVariant.orangeGlow,
+              url: ExternalLink.socialGitHub.url,
             ),
           ],
         ),
@@ -173,25 +167,19 @@ class BuildersPage extends StatelessComponent {
               title: 'YouTube Resources',
               resources: [
                 ResourceLink(
-                  emoji: '🎬',
                   title: 'AI Circle Playlist',
                   description: 'Collection of our community sessions and tutorials',
-                  link: ExternalLink.youTubePlaylist.url,
-                  variant: CardVariant.highlighted,
+                  url: ExternalLink.youTubePlaylist.url,
                 ),
                 ResourceLink(
-                  emoji: '🎮',
                   title: 'Vibe Coding Sessions',
                   description: 'Relaxed coding streams building AI-powered apps',
-                  link: ExternalLink.youTubeVibeCoding.url,
-                  variant: CardVariant.greenGlow,
+                  url: ExternalLink.youTubeVibeCoding.url,
                 ),
                 ResourceLink(
-                  emoji: '🧠',
                   title: 'Agentic Q&A Session',
                   description: 'Deep dive into agentic app patterns',
-                  link: ExternalLink.youTubeAgenticQA.url,
-                  variant: CardVariant.orangeGlow,
+                  url: ExternalLink.youTubeAgenticQA.url,
                 ),
               ],
             ),
@@ -214,19 +202,15 @@ class BuildersPage extends StatelessComponent {
           useGrid: true,
           resources: [
             ResourceLink(
-              emoji: '🔄',
               title: 'Function Calling with Gemini',
               description:
                   'Official documentation for implementing function calling with Gemini AI',
-              link: ExternalLink.geminiFunctionCallingDocs.url,
-              variant: CardVariant.highlighted,
+              url: ExternalLink.geminiFunctionCallingDocs.url,
             ),
             ResourceLink(
-              emoji: '🎥',
               title: 'MCP for Flutter Developers',
               description: 'Understanding the Model Context Protocol for Flutter applications',
-              link: ExternalLink.youTubeJhinLeeMCPHumpdayQA.url,
-              variant: CardVariant.blueGlow,
+              url: ExternalLink.youTubeJhinLeeMCPHumpdayQA.url,
             ),
           ],
         ),
@@ -236,25 +220,19 @@ class BuildersPage extends StatelessComponent {
           useGrid: true,
           resources: [
             ResourceLink(
-              emoji: '📺',
               title: 'YouTube Channel',
               description: 'Tutorials, livestreams, and coding sessions from our community',
-              link: ExternalLink.youTubeFlutterCommunity.url,
-              variant: CardVariant.highlighted,
+              url: ExternalLink.youTubeFlutterCommunity.url,
             ),
             ResourceLink(
-              emoji: '💬',
               title: 'Flutter Forum',
               description: 'Discussions, Q&A, and knowledge sharing about Flutter and AI',
-              link: ExternalLink.forumCategory.url,
-              variant: CardVariant.greenGlow,
+              url: ExternalLink.forumCategory.url,
             ),
             ResourceLink(
-              emoji: '📝',
               title: 'Community Survey',
               description: 'Help shape the future of our community by sharing your feedback',
-              link: ExternalLink.surveyCommunity.url,
-              variant: CardVariant.orangeGlow,
+              url: ExternalLink.surveyCommunity.url,
             ),
           ],
         ),
@@ -275,30 +253,24 @@ class BuildersPage extends StatelessComponent {
           useGrid: true,
           resources: [
             ResourceLink(
-              emoji: '📝',
               title: 'Write Documentation',
               description: 'Help create clear guides, examples, and tutorials for the community',
-              link: ExternalLink.socialGitHub.url,
-              variant: CardVariant.blueGlow,
+              url: ExternalLink.socialGitHub.url,
             ),
             ResourceLink(
-              emoji: '🧪',
               title: 'Create Example Apps',
               description: 'Build sample projects demonstrating AI integration patterns',
-              link: ExternalLink.socialGitHub.url,
-              variant: CardVariant.highlighted,
+              url: ExternalLink.socialGitHub.url,
             ),
             ResourceLink(
-              emoji: '🔍',
               title: 'Review Code',
               description: 'Help ensure quality and consistency in our code samples',
-              link: ExternalLink.socialGitHub.url,
+              url: ExternalLink.socialGitHub.url,
             ),
             ResourceLink(
-              emoji: '🌐',
               title: 'Spread the Word',
               description: 'Share our resources with your network and community',
-              link: ExternalLink.surveyCommunity.url,
+              url: ExternalLink.surveyCommunity.url,
             ),
           ],
         ),

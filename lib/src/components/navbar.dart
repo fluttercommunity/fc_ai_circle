@@ -15,37 +15,76 @@ class Navbar extends StatefulComponent {
 }
 
 class _NavbarState extends State<Navbar> {
+  bool _isMenuOpen = false;
+
+  void _toggleMenu() {
+    setState(() {
+      _isMenuOpen = !_isMenuOpen;
+    });
+  }
+
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield nav(
       id: 'navbar',
       classes: 'navbar',
       [
-        div(classes: 'container', [
-          a(
-            href: HomePage.path,
-            onClick: () => Router.of(context).push(HomePage.path),
-            classes: 'navbar-brand',
-            [
-              img(
-                src: '/images/logo_1x.png',
-                alt: 'Flutter Community AI Circle',
-              )
-            ],
-          ),
-          div(
-            classes: 'nav-links',
-            [
-              _NavItem(path: '/', label: 'Home'),
-              _NavItem(path: StartersPage.path, label: 'Starters'),
-              _NavItem(path: BuildersPage.path, label: 'Builders'),
-              _NavItem(link: ExternalLink.youTubePlaylist, label: 'YouTube'),
-              _NavItem(link: ExternalLink.socialGitHub, label: 'GitHub'),
-              _NavItem(link: ExternalLink.forumCategory, label: 'Forum'),
-            ],
-          ),
-          TakeSurvey(),
-        ]),
+        div(
+          classes: 'container',
+          [
+            // Top row with logo and mobile menu toggle
+            div(
+              classes: 'navbar-top-row',
+              [
+                a(
+                  href: HomePage.path,
+                  onClick: () => Router.of(context).push(HomePage.path),
+                  classes: 'navbar-brand',
+                  [
+                    img(
+                      src: '/images/logo_1x.png',
+                      alt: 'Flutter Community AI Circle',
+                    )
+                  ],
+                ),
+                // Mobile menu toggle button
+                div(
+                  classes: 'mobile-menu-toggle',
+                  events: {
+                    'click': (event) => _toggleMenu(),
+                  },
+                  [
+                    span([]),
+                    span([]),
+                    span([]),
+                  ],
+                ),
+              ],
+            ),
+            // Navigation links with proper wrapper
+            div(
+              classes: 'nav-menu-container ${_isMenuOpen ? 'open' : ''}',
+              [
+                div(
+                  classes: 'nav-links',
+                  [
+                    _NavItem(path: '/', label: 'Home'),
+                    _NavItem(path: StartersPage.path, label: 'Starters'),
+                    _NavItem(path: BuildersPage.path, label: 'Builders'),
+                    _NavItem(link: ExternalLink.youTubePlaylist, label: 'YouTube'),
+                    _NavItem(link: ExternalLink.socialGitHub, label: 'GitHub'),
+                    _NavItem(link: ExternalLink.forumCategory, label: 'Forum'),
+                  ],
+                ),
+                // Survey button inside nav container for mobile
+                div(
+                  classes: 'navbar-cta',
+                  [TakeSurvey()],
+                ),
+              ],
+            ),
+          ],
+        ),
       ],
     );
   }
@@ -64,13 +103,11 @@ class _NavItem extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    // TODO: selected state?
     final selected = window.location.pathname == path;
     yield a(
       classes: [
         'nav-link',
-        if (selected) //
-          'nav-selected',
+        if (selected) 'nav-selected',
       ].join(' '),
       href: path ?? link!.url,
       target: link != null ? Target.blank : null,

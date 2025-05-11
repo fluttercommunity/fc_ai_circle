@@ -28,6 +28,16 @@ void main() {
           const link = e.target.closest('a');
           if (link) {
             const href = link.getAttribute('href');
+            
+            // Handle nav menu link clicks - close the mobile menu
+            if (link.classList.contains('nav-link')) {
+              // Find the nav-links element and remove the 'open' class
+              const navLinks = document.querySelector('.nav-links');
+              if (navLinks && navLinks.classList.contains('open')) {
+                navLinks.classList.remove('open');
+              }
+            }
+            
             if (href && (href.includes('/starters') || href.includes('/builders'))) {
               // For internal links, set a flag to scroll after navigation
               window.__needsScrollReset = true;
