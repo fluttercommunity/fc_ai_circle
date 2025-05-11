@@ -134,18 +134,25 @@ class StartersPage extends StatelessComponent {
               link: 'https://platform.openai.com/docs',
             ),
             ResourceLink(
-              emoji: '📦',
-              title: 'dart_openai (Community SDK)',
-              description:
-                  'Intermediate. A Dart package that simplifies using OpenAI APIs within Flutter projects.',
-              link: 'https://pub.dev/packages/dart_openai',
-            ),
-            ResourceLink(
               emoji: '🧠',
               title: 'Anthropic Claude API',
               description:
                   'Beginner. Official Claude API docs with example request/response flows.',
               link: 'https://docs.anthropic.com/claude/docs',
+            ),
+            ResourceLink(
+              emoji: '📦',
+              title: 'mcp_dart (Community SDK)',
+              description:
+                  'Integrate LLM applications with external data and tools using this Dart SDK for the Model Context Protocol (MCP).',
+              link: 'https://pub.dev/packages/mcp_dart',
+            ),
+            ResourceLink(
+              emoji: '📦',
+              title: 'dart_openai (Community SDK)',
+              description:
+                  'Intermediate. A Dart package that simplifies using OpenAI APIs within Flutter projects.',
+              link: 'https://pub.dev/packages/dart_openai',
             ),
           ],
         ),
