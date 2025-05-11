@@ -64,31 +64,50 @@ a.resource-link:hover {
 }
 
 /* Survey callout styling */
+.survey-callout-container {
+  display: flex; /* Optional: for centering the callout if it has a max-width */
+  justify-content: center; /* Optional: for centering */
+  padding: 2rem 0; /* Add some vertical spacing around the callout */
+}
+
 .survey-callout {
-  margin: 3rem 0;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: var(--primary-color); /* Add a background color */
+  background-color: var(--primary-color, #2c3e50); /* Use a theme variable or a dark bg */
+  color: var(--text-color-light, #ecf0f1); /* Light text for dark background */
+  padding: 2rem 2.5rem; /* Generous padding */
+  border-radius: 12px; /* Soft rounded corners */
+  /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); */ /* Softer, more modern shadow if needed, or remove if it was causing issues */
+  /* Remove overflow: hidden unless specifically needed for a child element */
+  /* max-width: 800px; */ /* Optional: constrain width */
+  /* margin: 3rem auto; */ /* Replaced by survey-callout-container for centering */
 }
 
 .survey-header {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem; /* Increased spacing */
   gap: 1rem;
 }
 
 .large-emoji {
-  font-size: 2.5rem;
-  padding: 0.5rem;
+  font-size: 2.8rem; /* Slightly larger emoji */
+  /* padding: 0.5rem; */ /* Padding might not be needed if alignment is good */
   display: inline-block;
 }
 
 .survey-title {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.6rem; /* Adjusted for new shorter title */
+  font-weight: 600; /* Bolder title */
   line-height: 1.3;
-  color: white; /* Changed from var(--primary-color) to white */
+  color: inherit; /* Inherit from .survey-callout */
+}
+
+.survey-description {
+  font-size: 1rem; /* Standard paragraph size */
+  line-height: 1.6;
+  margin-bottom: 1.75rem; /* More space before the button */
+  color: inherit; /* Inherit from .survey-callout, or slightly less prominent */
+  opacity: 0.9; /* Slightly less prominent description text */
 }
 
 .centered-buttons {

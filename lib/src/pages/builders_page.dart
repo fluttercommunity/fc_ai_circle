@@ -406,45 +406,39 @@ class _SurveySection extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(
-      classes: 'container',
+      classes: 'survey-callout-container',
       [
         div(
           classes: 'survey-callout',
           [
-            ContentCard(
-              elevated: true,
-              animateCta: true,
-              children: [
-                div(
-                  classes: 'survey-header',
+            div(
+              classes: 'survey-header',
+              [
+                span(
+                    classes: 'emoji large-emoji',
+                    attributes: {'aria-hidden': 'true'},
+                    [text('🔔')]),
+                h2(classes: 'survey-title', [text('Shape Our Community!')]),
+              ],
+            ),
+            p(
+              classes: 'survey-description',
+              styles: Styles(color: Colors.white),
+              [
+                text(
+                    'Be part of our growing community of Flutter developers exploring AI integration. Share your knowledge, learn from others, and build the future of AI-powered Flutter apps.')
+              ],
+            ),
+            div(
+              classes: 'buttons-container centered-buttons',
+              [
+                a(
+                  href: ExternalLink.surveyCommunity.url,
+                  target: Target.blank,
+                  attributes: {'rel': 'noopener noreferrer'},
+                  classes: 'cta_button pulse-button',
                   [
-                    span(classes: 'emoji large-emoji', [text('🔔')]),
-                    h2(classes: 'survey-title', [
-                      text(
-                          'Take our community survey to help shape the future of the Flutter Community AI Circle')
-                    ]),
-                  ],
-                ),
-                p(
-                  styles:
-                      Styles(color: Colors.white), // Retaining explicit white color for this text
-                  [
-                    text(
-                        'Be part of our growing community of Flutter developers exploring AI integration. Share your knowledge, learn from others, and build the future of AI-powered Flutter apps.')
-                  ],
-                ),
-                div(
-                  classes: 'buttons-container centered-buttons',
-                  [
-                    a(
-                      href: ExternalLink.surveyCommunity.url,
-                      target: Target.blank,
-                      attributes: {'rel': 'noopener noreferrer'},
-                      classes: 'cta_button pulse-button',
-                      [
-                        span([text('Take the Survey')])
-                      ],
-                    ),
+                    span([text('Take the Survey')])
                   ],
                 ),
               ],
