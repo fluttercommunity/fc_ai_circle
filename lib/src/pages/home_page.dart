@@ -96,8 +96,9 @@ class _FeaturesSection extends StatelessComponent {
         div(classes: 'features-grid', [
           _FeatureCard(
             title: 'Past Livestream',
-            description: 'Vibe Coding a Card Game with Norbert & Friends',
-            url: ExternalLink.youTubeVibeCoding.url,
+            description: 'FCAIC #1 - Prompt, Code, Think: Welcome to AI in Flutter',
+            url:
+                'https://www.youtube.com/watch?v=Gub1DY8ScwU&list=PL4dBIh1xps-HIYvaEIbLWHZqt_WGBfpx3',
           ),
           _FeatureCard(
             title: 'Agentic Apps Spotlight',

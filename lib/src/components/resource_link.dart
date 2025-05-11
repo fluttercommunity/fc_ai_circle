@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'dart:html' as html;
 import 'package:jaspr/browser.dart';
 
 enum CardVariant {
@@ -69,7 +67,7 @@ class ResourceLink extends StatelessComponent {
           classes: variantClasses.join(' '),
           attributes: {
             'role': 'article',
-            'aria-label': title + (description != null ? " - $description" : ""),
+            'aria-label': title + (description != null ? ' - $description' : ''),
             'rel': 'noopener noreferrer',
             'data-card-height': '${description != null ? (description!.length ~/ 2) + 120 : 80}',
           },

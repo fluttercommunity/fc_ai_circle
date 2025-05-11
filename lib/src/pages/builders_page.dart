@@ -1,16 +1,20 @@
 import 'package:fc_ai_circle/src/components/content_section.dart';
+import 'package:fc_ai_circle/src/components/feature_card.dart';
 import 'package:fc_ai_circle/src/components/page_hero.dart';
 import 'package:fc_ai_circle/src/components/resource_link.dart';
+import 'package:fc_ai_circle/src/components/survey_callout.dart';
 import 'package:fc_ai_circle/src/layouts/page_layout.dart';
 import 'package:fc_ai_circle/src/app/external_links.dart';
 import 'package:jaspr/browser.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
+/// The Builders page showcases the community's purpose, mission and resources.
 class BuildersPage extends StatelessComponent {
   const BuildersPage({super.key});
 
   static const path = '/builders';
 
+  /// Defines the routing for this page
   static Iterable<Route> route() sync* {
     yield Route(
       path: path,
@@ -28,7 +32,7 @@ class BuildersPage extends StatelessComponent {
         _buildMissionSection(),
         _buildWhatWeDoSection(),
         _buildToolkitSection(),
-        const _SurveySection(),
+        const SurveyCallout(), // Using our new component
         _buildContributorsSection(context),
       ],
     );
@@ -132,31 +136,31 @@ class BuildersPage extends StatelessComponent {
           classes: 'features-grid',
           attributes: {'role': 'list'},
           [
-            _FeatureCard(
+            FeatureCard(
               title: 'Share Knowledge',
               description: 'Technical articles, code examples, and implementation guides',
               isHighlighted: true,
               emoji: '📚',
             ),
-            _FeatureCard(
+            FeatureCard(
               title: 'Build Tools',
               description: 'Open-source packages and utilities to simplify AI integration',
               emoji: '🔧',
             ),
-            _FeatureCard(
+            FeatureCard(
               title: 'Provide Templates',
               description: 'Ready-to-use starter projects for common AI tasks',
               isHighlighted: true,
               emoji: '📋',
             ),
-            _FeatureCard(
+            FeatureCard(
               title: 'Foster Collaboration',
               description: 'Connect developers working on similar challenges',
               emoji: '🤝',
             ),
           ],
         ),
-        div(styles: Styles(height: Unit.em(2)), []),
+        div(classes: 'section-spacer', []),
         ContentSection(
           title: 'YouTube Content',
           emoji: '💡',
@@ -258,23 +262,6 @@ class BuildersPage extends StatelessComponent {
     );
   }
 
-  // Helper method to create a resource card (no special click logic here anymore)
-  ResourceLink _buildClickableCard({
-    required String emoji,
-    required String title,
-    required String link,
-    String? description,
-    CardVariant variant = CardVariant.standard,
-  }) {
-    return ResourceLink(
-      emoji: emoji,
-      title: title,
-      description: description,
-      link: link,
-      variant: variant,
-    );
-  }
-
   Component _buildContributorsSection(BuildContext context) {
     return ContentSection(
       title: 'Want to Contribute?',
@@ -322,7 +309,7 @@ class BuildersPage extends StatelessComponent {
             div(
               classes: 'volunteer-note',
               [
-                span(classes: 'emoji', [text('✋')]),
+                span(classes: 'emoji', attributes: {'aria-hidden': 'true'}, [text('✋')]),
                 h3([text('Ready to contribute?')]),
                 p([
                   text(
@@ -359,86 +346,6 @@ class BuildersPage extends StatelessComponent {
                   classes: 'secondary-button',
                   [
                     span([text('GitHub Repository')])
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class _FeatureCard extends StatelessComponent {
-  const _FeatureCard({
-    required this.title,
-    required this.description,
-    this.isHighlighted = false,
-    this.emoji,
-  });
-
-  final String title;
-  final String description;
-  final bool isHighlighted;
-  final String? emoji;
-
-  @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-      classes: isHighlighted ? 'feature-card highlighted' : 'feature-card',
-      attributes: {'role': 'listitem'},
-      [
-        h3([
-          if (emoji != null) span(classes: 'feature-emoji', [text('$emoji ')]),
-          text(title),
-        ]),
-        p([text(description)]),
-      ],
-    );
-  }
-}
-
-// New private component for the Survey Section
-class _SurveySection extends StatelessComponent {
-  const _SurveySection({super.key});
-
-  @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-      classes: 'survey-callout-container',
-      [
-        div(
-          classes: 'survey-callout',
-          [
-            div(
-              classes: 'survey-header',
-              [
-                span(
-                    classes: 'emoji large-emoji',
-                    attributes: {'aria-hidden': 'true'},
-                    [text('🔔')]),
-                h2(classes: 'survey-title', [text('Shape Our Community!')]),
-              ],
-            ),
-            p(
-              classes: 'survey-description',
-              styles: Styles(color: Colors.white),
-              [
-                text(
-                    'Be part of our growing community of Flutter developers exploring AI integration. Share your knowledge, learn from others, and build the future of AI-powered Flutter apps.')
-              ],
-            ),
-            div(
-              classes: 'buttons-container centered-buttons',
-              [
-                a(
-                  href: ExternalLink.surveyCommunity.url,
-                  target: Target.blank,
-                  attributes: {'rel': 'noopener noreferrer'},
-                  classes: 'cta_button pulse-button',
-                  [
-                    span([text('Take the Survey')])
                   ],
                 ),
               ],

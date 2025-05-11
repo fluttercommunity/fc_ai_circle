@@ -438,14 +438,9 @@ footer a:hover, a.selected {
 
 /* Animation Hints - for future implementation */
 .section-title {
-    /*
-    TODO: Implement scroll-based animations
-    Add fade-in and slide-up animation when section comes into viewport
-    Example:
-    .section-title.visible {
-      animation: fadeSlideUp 0.8s ease forwards;
-    }
-    */
+    font-size: 42px;
+    margin-bottom: var(--spacing-xl);
+    /* Remove any animated or decorative elements */
 }
 
 /* Category sections */
@@ -582,6 +577,7 @@ button:focus-visible {
     position: relative;
 }
 
+/* Remove the divider
 .content-section:not(:last-child):after {
     content: '';
     height: 4px;
@@ -592,6 +588,7 @@ button:focus-visible {
     margin: 32px auto 0;
     display: block;
 }
+*/
 
 .section-content {
     padding: var(--spacing-md) 0;
@@ -633,14 +630,15 @@ button:focus-visible {
     border-radius: var(--border-radius);
     margin-bottom: var(--spacing-md);
     transition: all var(--transition-speed);
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     height: 100%;
     box-sizing: border-box;
 }
 
 .resource-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 20px var(--shadow-color);
+    box-shadow: 0 0 15px rgba(171, 87, 255, 0.15);
+    border-color: rgba(171, 87, 255, 0.2);
 }
 
 .resource-emoji {
@@ -667,6 +665,7 @@ button:focus-visible {
     gap: 8px;
 }
 
+/* Remove the arrow decoration 
 .resource-title:after {
     content: '→';
     font-size: 0.8em;
@@ -679,6 +678,7 @@ button:focus-visible {
     opacity: 1;
     transform: translateX(0);
 }
+*/
 
 .resource-description {
     color: var(--secondary-text);
@@ -694,22 +694,22 @@ button:focus-visible {
 
 /* Category accent colors - using theme variables */
 .resource-category.purple-accent {
-    border-left: 3px solid var(--accent-color);
+    border-left: 1px solid var(--accent-color);
     padding-left: var(--spacing-md);
 }
 
 .resource-category.blue-accent {
-    border-left: 3px solid #4e9fff;
+    border-left: 1px solid #4e9fff;
     padding-left: var(--spacing-md);
 }
 
 .resource-category.green-accent {
-    border-left: 3px solid #57ffab;
+    border-left: 1px solid #57ffab;
     padding-left: var(--spacing-md);
 }
 
 .resource-category.orange-accent {
-    border-left: 3px solid #ff9f4e;
+    border-left: 1px solid #ff9f4e;
     padding-left: var(--spacing-md);
 }
 
@@ -719,28 +719,6 @@ button:focus-visible {
     margin-bottom: var(--spacing-md);
     color: var(--accent-color);
     font-weight: 600;
-    display: flex;
-    align-items: center;
-}
-
-.category-title:before {
-    content: '';
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent-color);
-    margin-right: 12px;
-}
-
-.category-title:after {
-    content: '';
-    display: block;
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
-    flex: 1;
-    margin-left: var(--spacing-md);
-    opacity: 0.3;
 }
 
 /* Grid layout for resource lists */
@@ -750,35 +728,15 @@ button:focus-visible {
     gap: var(--spacing-md);
 }
 
-/* Card variants - consolidating shared styles */
-.resource-link {
-    display: flex;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md);
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius);
-    margin-bottom: var(--spacing-md);
-    transition: all var(--transition-speed);
-    border: 1px solid transparent;
-    height: 100%;
-    box-sizing: border-box;
-}
-
-.resource-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px var(--shadow-color);
-}
-
-/* Highlighted variant */
+/* Highlighted variant - more subtle */
 .resource-link.highlighted {
-    box-shadow: 0 0 15px rgba(171, 87, 255, 0.15);
-    border: 1px solid rgba(171, 87, 255, 0.2);
-    background-color: rgba(171, 87, 255, 0.03);
+    border: 1px solid rgba(171, 87, 255, 0.15);
+    background-color: rgba(171, 87, 255, 0.02);
 }
 
 .resource-link.highlighted:hover {
-    box-shadow: 0 0 20px rgba(171, 87, 255, 0.3);
-    border-color: rgba(171, 87, 255, 0.4);
+    box-shadow: 0 0 15px rgba(171, 87, 255, 0.2);
+    border-color: rgba(171, 87, 255, 0.25);
 }
 
 /* Compact variant */
@@ -796,47 +754,51 @@ button:focus-visible {
     margin-bottom: 0;
 }
 
-/* Color variant styles */
+/* Color variant styles - more subtle */
 .resource-link.blue-glow {
-    box-shadow: 0 0 15px rgba(78, 159, 255, 0.15);
-    border: 1px solid rgba(78, 159, 255, 0.2);
-    background-color: rgba(78, 159, 255, 0.03);
+    border: 1px solid rgba(78, 159, 255, 0.15);
+    background-color: rgba(78, 159, 255, 0.02);
 }
 
 .resource-link.blue-glow:hover {
-    box-shadow: 0 0 20px rgba(78, 159, 255, 0.3);
-    border-color: rgba(78, 159, 255, 0.4);
+    box-shadow: 0 0 15px rgba(78, 159, 255, 0.2);
+    border-color: rgba(78, 159, 255, 0.25);
 }
 
 .resource-link.green-glow {
-    box-shadow: 0 0 15px rgba(87, 255, 171, 0.15);
-    border: 1px solid rgba(87, 255, 171, 0.2);
-    background-color: rgba(87, 255, 171, 0.03);
+    border: 1px solid rgba(87, 255, 171, 0.15);
+    background-color: rgba(87, 255, 171, 0.02);
 }
 
 .resource-link.green-glow:hover {
-    box-shadow: 0 0 20px rgba(87, 255, 171, 0.3);
-    border-color: rgba(87, 255, 171, 0.4);
+    box-shadow: 0 0 15px rgba(87, 255, 171, 0.2);
+    border-color: rgba(87, 255, 171, 0.25);
 }
 
 .resource-link.orange-glow {
-    box-shadow: 0 0 15px rgba(255, 159, 78, 0.15);
-    border: 1px solid rgba(255, 159, 78, 0.2);
-    background-color: rgba(255, 159, 78, 0.03);
+    border: 1px solid rgba(255, 159, 78, 0.15);
+    background-color: rgba(255, 159, 78, 0.02);
 }
 
 .resource-link.orange-glow:hover {
-    box-shadow: 0 0 20px rgba(255, 159, 78, 0.3);
-    border-color: rgba(255, 159, 78, 0.4);
+    box-shadow: 0 0 15px rgba(255, 159, 78, 0.2);
+    border-color: rgba(255, 159, 78, 0.25);
 }
 
 /* Scrollable container styles */
 .scrollable-container {
     position: relative;
-    margin-bottom: var(--spacing-md);
 }
 
-/* Only enable scrolling on mobile */
+/* Remove ALL instances of the dots and gradients */
+.scrollable-container:before,
+.scrollable-container:after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+}
+
+/* Only enable scrolling on mobile but without dots */
 @media (max-width: 768px) {
     .scrollable-container {
         overflow-x: auto;
@@ -858,32 +820,14 @@ button:focus-visible {
         flex: 0 0 auto;
     }
     
-    /* Fade gradient at right edge */
+    /* Remove fade gradient at right edge */
     .scrollable-container:before {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: var(--spacing-md);
-        width: 40px;
-        background: linear-gradient(90deg, transparent, var(--background));
-        z-index: 1;
-        pointer-events: none;
+        display: none;
     }
     
-    /* Arrow indicator for scroll */
+    /* Remove arrow indicator for scroll */
     .scrollable-container:after {
-        content: '→';
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--accent-color);
-        font-size: 20px;
-        opacity: 0.7;
-        z-index: 2;
-        pointer-events: none;
-        animation: pulse-hint 2s infinite ease-in-out;
+        display: none;
     }
     
     /* Scrollbar styling */
@@ -926,6 +870,12 @@ button:focus-visible {
         min-width: unset;
         max-width: unset;
     }
+}
+
+/* Also remove any other instances of scrollable-container before/after */
+.scrollable-container:before,
+.scrollable-container:after {
+    display: none;
 }
 
 /* Extra large screens */
@@ -1020,10 +970,6 @@ button:focus-visible {
         font-size: 20px;
     }
     
-    .category-title:after {
-        margin-left: var(--spacing-sm);
-    }
-    
     .resource-link {
         padding: var(--spacing-sm);
     }
@@ -1084,17 +1030,6 @@ button:focus-visible {
     position: relative;
 }
 
-.coming-next-content:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    opacity: 0.2;
-}
-
 .coming-next-text {
     font-size: 18px;
     text-align: center;
@@ -1151,11 +1086,6 @@ button:focus-visible {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-/* Alternating category backgrounds */
-.resource-category:nth-child(odd) {
-    background-color: rgba(255, 255, 255, 0.01);
 }
 
 /* Enhanced scrollable containers */
@@ -1272,17 +1202,6 @@ button:focus-visible {
     position: relative;
 }
 
-.coming-next-content:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    opacity: 0.2;
-}
-
 /* Masonry-style grid for varying card heights */
 @media (min-width: 768px) {
     .resource-list.masonry-grid {
@@ -1351,4 +1270,58 @@ button:focus-visible {
     font-size: 20px;
     margin-right: 8px;
     color: var(--accent-color);
+}
+
+/* Card variants - make all cards visually equivalent */
+.resource-link {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+    transition: all var(--transition-speed);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.resource-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(171, 87, 255, 0.15);
+    border-color: rgba(171, 87, 255, 0.2);
+}
+
+/* Completely neutralize variant styles */
+.resource-link.highlighted,
+.resource-link.blue-glow,
+.resource-link.green-glow,
+.resource-link.orange-glow {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--card-bg);
+    box-shadow: none;
+}
+
+/* All variants use the same hover style */
+.resource-link.highlighted:hover,
+.resource-link.blue-glow:hover,
+.resource-link.green-glow:hover,
+.resource-link.orange-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(171, 87, 255, 0.15);
+    border-color: rgba(171, 87, 255, 0.2);
+}
+
+/* Final override to remove ALL dots, arrows, and other decorative elements from scrollable containers */
+.scrollable-container:before,
+.scrollable-container:after {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }

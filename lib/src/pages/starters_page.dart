@@ -60,17 +60,17 @@ class StartersPage extends StatelessComponent {
       id: 'core-concepts',
       emoji: '🧩',
       children: [
-        ul(
-          classes: 'resource-list',
-          attributes: {'role': 'list'},
-          [
+        ResourceCategory(
+          title: 'Key Concepts',
+          useGrid: true,
+          resources: [
             ResourceLink(
               emoji: '🧠',
               title: 'LangChain: Introduction',
               description:
                   'Learn the foundations of LangChain and its modular architecture for building LLM-powered agents.',
               link: 'https://python.langchain.com/docs/introduction/',
-              variant: CardVariant.highlighted,
+              variant: CardVariant.standard,
             ),
             ResourceLink(
               emoji: '📘',
@@ -85,7 +85,7 @@ class StartersPage extends StatelessComponent {
               title: 'Introducing the Model Context Protocol (Anthropic)',
               description: 'Learn how MCP standardizes interactions between LLMs and tools.',
               link: 'https://www.anthropic.com/news/model-context-protocol',
-              variant: CardVariant.blueGlow,
+              variant: CardVariant.standard,
             ),
             ResourceLink(
               emoji: '📚',
@@ -101,7 +101,7 @@ class StartersPage extends StatelessComponent {
                   'Craig Labenz and Andrew Brogdon walk through agentic patterns, Colorist, and Firebase Genkit.',
               link:
                   'https://www.youtube.com/watch?v=eczLRG3q4V0&list=PLjxrf2q8roU1GHtc2FCHoEZr_v-LqnTZX',
-              variant: CardVariant.orangeGlow,
+              variant: CardVariant.standard,
             ),
           ],
         ),
@@ -125,7 +125,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Beginner/Intermediate. Learn how to integrate Gemini into a Flutter app using Firebase extensions and function calling.',
               link: 'https://codelabs.developers.google.com/codelabs/flutter-gemini-colorist',
-              variant: CardVariant.highlighted,
+              variant: CardVariant.standard,
             ),
             ResourceLink(
               emoji: '🤖',
@@ -167,7 +167,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Beginner. Transcribe audio to text using OpenAI\'s hosted Whisper model.',
               link: 'https://platform.openai.com/docs/guides/speech-to-text',
-              variant: CardVariant.greenGlow,
+              variant: CardVariant.standard,
             ),
             ResourceLink(
               emoji: '📱',
@@ -189,7 +189,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Intermediate. Store and retrieve vector embeddings in Firestore for building RAG pipelines.',
               link: 'https://extensions.dev/extensions/googlecloud/firestore-vector-search',
-              variant: CardVariant.orangeGlow,
+              variant: CardVariant.standard,
             ),
             ResourceLink(
               emoji: '⚡',
@@ -197,7 +197,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Advanced. A backend framework for building AI-driven workflows with Gemini, designed for Cloud Functions.',
               link: 'https://firebase.google.com/docs/genkit',
-              variant: CardVariant.highlighted,
+              variant: CardVariant.standard,
             ),
           ],
         ),
@@ -251,7 +251,7 @@ class StartersPage extends StatelessComponent {
         ResourceCategory(
           title: 'Codelabs, Templates, and Examples',
           accent: CategoryAccent.green,
-          useHorizontalScroll: true,
+          useGrid: true,
           resources: [
             ResourceLink(
               emoji: '🎨',
@@ -259,7 +259,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Intermediate. Gemini-powered Flutter app that updates the UI based on natural language prompts.',
               link: 'https://codelabs.developers.google.com/codelabs/flutter-gemini-colorist',
-              variant: CardVariant.highlighted,
+              variant: CardVariant.standard,
             ),
             ResourceLink(
               emoji: '📚',
@@ -267,7 +267,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Intermediate/Advanced. Google\'s official examples for calling Gemini API across languages including Dart.',
               link: 'https://github.com/google-gemini/cookbook',
-              variant: CardVariant.greenGlow,
+              variant: CardVariant.standard,
             ),
             ResourceLink(
               emoji: '🚀',
@@ -295,7 +295,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Intermediate. Community Dart port of LangChain, featuring clients for OpenAI, Google, Anthropic, and more.',
               link: 'https://pub.dev/packages/langchain',
-              variant: CardVariant.highlighted,
+              variant: CardVariant.standard,
             ),
             ResourceLink(
               emoji: '🤖',
@@ -303,7 +303,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'Advanced. A collection of Flutter plugins for integrating generative AI capabilities into your applications.',
               link: 'https://pub.dev/packages/flutter_genai',
-              variant: CardVariant.blueGlow,
+              variant: CardVariant.standard,
             ),
             ResourceLink(
               emoji: '📱',
@@ -324,10 +324,10 @@ class StartersPage extends StatelessComponent {
       id: 'deepen-understanding',
       emoji: '🧠',
       children: [
-        ul(
-          classes: 'resource-list',
-          attributes: {'role': 'list'},
-          [
+        ResourceCategory(
+          title: 'Additional Resources',
+          useGrid: true,
+          resources: [
             ResourceLink(
               emoji: '🎥',
               title: 'Agentic Apps with Flutter (Observable Flutter #59)',
@@ -335,7 +335,7 @@ class StartersPage extends StatelessComponent {
                   'https://www.youtube.com/watch?v=eczLRG3q4V0&list=PLjxrf2q8roU1GHtc2FCHoEZr_v-LqnTZX',
               description:
                   'Craig Labenz and Andrew Brogdon discuss and explore AI-powered, agentic apps in Flutter in this Observable Flutter episode.',
-              variant: CardVariant.greenGlow,
+              variant: CardVariant.standard,
             ),
             ResourceLink(
               emoji: '💬',
@@ -343,7 +343,7 @@ class StartersPage extends StatelessComponent {
               link: ExternalLink.geminiFunctionCallingDocs.url,
               description:
                   'Official Gemini API docs on connecting models to external tools and APIs. Learn how function calling bridges natural language to real-world actions and data.',
-              variant: CardVariant.blueGlow,
+              variant: CardVariant.standard,
             ),
             ResourceLink(
               emoji: '🎥',
@@ -351,7 +351,7 @@ class StartersPage extends StatelessComponent {
               description:
                   'GDE Jhin Lee discusses the mcp_dart package and the Model Context Protocol. (MCP segment starts at 29:54).',
               link: ExternalLink.youTubeJhinLeeMCPHumpdayQA.url,
-              variant: CardVariant.orangeGlow,
+              variant: CardVariant.standard,
             ),
           ],
         ),
@@ -448,12 +448,14 @@ class StartersPage extends StatelessComponent {
         ),
         // Simple, centered volunteer note (no longer in a card)
         p(
-          styles: Styles.raw({
-            'text-align': 'center',
-            'color': 'var(--secondary-text)',
-            'margin-top': 'var(--spacing-lg)',
-            'font-size': '0.9em' /* Optional: slightly smaller text for a footnote feel */
-          }),
+          styles: Styles(
+            textAlign: TextAlign.center,
+            raw: {
+              'color': 'var(--secondary-text)',
+              'margin-top': 'var(--spacing-lg)',
+            },
+            fontSize: Unit.em(0.9), // Proper Unit for fontSize
+          ),
           [
             span(classes: 'emoji', [text('🌱')]),
             text(' This space is volunteer-built with '),

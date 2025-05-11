@@ -1,48 +1,41 @@
 /* Make resource cards fully clickable */
 /* The .resource-link class is now on an <a> tag */
 a.resource-link {
-  display: flex; /* Or block, depending on desired inner layout. Flex is often good for card-like structures. */
-  flex-direction: row; /* Align emoji and content side-by-side */
-  align-items: center; /* Vertically align items if flex-direction is row */
-  padding: 1rem; /* Example padding, adjust as needed */
-  border: 1px solid var(--border-color, #ccc); /* Example border */
-  border-radius: 8px; /* Example border-radius */
-  text-decoration: none; /* Remove default underline from the main link */
-  color: inherit; /* Inherit text color from parent, or set explicitly */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  text-decoration: none;
+  color: inherit;
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  /* cursor: pointer; */ /* Browsers usually do this for <a> tags by default */
 }
 
 a.resource-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  /* Add other hover styles as needed, e.g., border-color */
+  transform: translateY(-2px);
 }
 
 /* Style for the title, which is now a span */
 .resource-link .resource-title {
-  /* position: relative; */ /* z-index from before is not needed */
-  font-weight: bold; /* Example: make title bold */
-  margin-bottom: 0.25em; /* Example spacing */
-  /* Ensure it doesn't pick up link colors if not desired */
+  font-weight: bold;
+  margin-bottom: 0.25em;
 }
 
 /* Adjust emoji and content div styling if needed due to flex layout on a.resource-link */
 .resource-link .resource-emoji {
-  margin-right: 0.75em; /* Space between emoji and content */
-  font-size: 1.5em; /* Example size */
+  margin-right: 0.75em;
+  font-size: 1.5em;
 }
 
 .resource-link .resource-content {
   display: flex;
-  flex-direction: column; /* Stack title and description vertically */
-  flex: 1; /* Allow content to take remaining space */
+  flex-direction: column;
+  flex: 1;
 }
 
 .resource-link .resource-description {
   font-size: 0.9em;
-  color: var(--text-secondary-color, #555); /* Example color */
+  color: var(--text-secondary-color, #555);
   line-height: 1.4;
 }
 
@@ -120,6 +113,10 @@ a.resource-link:hover {
   animation: pulse 2s infinite;
 }
 
+.pulse-button-wrapper a {
+  animation: pulse 2s infinite;
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
@@ -130,4 +127,10 @@ a.resource-link:hover {
   100% {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
+}
+
+/* Utility class for vertical spacing between sections */
+.section-spacer {
+  height: 2em;
+  width: 100%;
 }

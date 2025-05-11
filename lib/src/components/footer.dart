@@ -5,6 +5,7 @@ import 'package:fc_ai_circle/src/pages/builders_page.dart';
 import 'package:fc_ai_circle/src/pages/starters_page.dart';
 import 'package:fc_ai_circle/src/pages/privacy_policy_page.dart';
 import 'package:fc_ai_circle/src/pages/code_of_conduct_page.dart';
+import 'dart:js' as js;
 
 class Footer extends StatelessComponent {
   @override
@@ -112,7 +113,13 @@ class FooterColumn extends StatelessComponent {
             else
               a(
                 href: link.path,
-                onClick: () => Router.of(context).push(link.path),
+                onClick: () {
+                  // Push to the new route
+                  Router.of(context).push(link.path);
+                  // Force scroll to top with delay to ensure it happens after navigation
+                  js.context.callMethod(
+                      'eval', ['setTimeout(function() { window.scrollTo(0, 0); }, 10);']);
+                },
                 [text(link.label)],
               )
           ]),
