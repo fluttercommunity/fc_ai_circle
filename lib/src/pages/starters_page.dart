@@ -397,49 +397,58 @@ class StartersPage extends StatelessComponent {
 
   Component _buildComingNextSection() {
     return ContentSection(
-      title: 'Coming Next',
+      title: 'Stay Connected & See What\'s Next',
       id: 'coming-next',
-      emoji: '🧪',
+      emoji: '📺',
       elevated: true,
       children: [
         ContentCard(
           elevated: true,
           children: [
-            div(
-              classes: 'coming-next-content',
-              [
-                p(
-                  classes: 'coming-next-text',
+            h3([text('Catch Our Streams & Join the Conversation!')]),
+            p([
+              text(
+                  'Tune into live Humpday Q&As, Vibe Coding sessions, and exclusive AI Circle content on the official Flutter Community channel. Then, chat with us on the forum!')
+            ]),
+            div(classes: 'buttons-container', [
+              a(
+                  classes: 'cta_button',
+                  href: ExternalLink.youTubeFlutterCommunity.url,
+                  target: Target.blank,
+                  attributes: {
+                    'aria-label': 'Watch Flutter Community on YouTube',
+                    'rel': 'noopener noreferrer'
+                  },
                   [
-                    text('✨ Stay tuned for more resources at '),
-                    a(
-                      href: 'https://ai.fluttercommunity.dev',
-                      target: Target.blank,
-                      attributes: {
-                        'aria-label': 'Visit ai.fluttercommunity.dev',
-                        'rel': 'noopener noreferrer',
-                      },
-                      classes: 'highlight-link',
-                      [text('ai.fluttercommunity.dev')],
-                    ),
-                  ],
-                ),
-                div(
-                  classes: 'volunteer-note',
+                    text('▶️ Watch on YouTube')
+                  ]),
+              a(
+                  classes: 'secondary-button',
+                  href: ExternalLink.forumChat.url,
+                  target: Target.blank,
+                  attributes: {
+                    'aria-label': 'Join the Flutter Community Forum',
+                    'rel': 'noopener noreferrer'
+                  },
                   [
-                    span(
-                      classes: 'emoji',
-                      [text('🌱')],
-                    ),
-                    p([
-                      text(
-                        'This space is volunteer-built with ❤️ — we aim to make agentic Flutter development more accessible for everyone.',
-                      ),
-                    ]),
-                  ],
-                ),
-              ],
-            ),
+                    text('💬 Join the Forum')
+                  ]),
+            ]),
+          ],
+        ),
+        // Simple, centered volunteer note (no longer in a card)
+        p(
+          styles: Styles.raw({
+            'text-align': 'center',
+            'color': 'var(--secondary-text)',
+            'margin-top': 'var(--spacing-lg)',
+            'font-size': '0.9em' /* Optional: slightly smaller text for a footnote feel */
+          }),
+          [
+            span(classes: 'emoji', [text('🌱')]),
+            text(' This space is volunteer-built with '),
+            span(classes: 'emoji', [text('❤️')]),
+            text(' — we aim to make agentic Flutter development more accessible for everyone.'),
           ],
         ),
       ],
