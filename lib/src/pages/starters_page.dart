@@ -2,6 +2,7 @@ import 'package:fc_ai_circle/src/components/content_section.dart';
 import 'package:fc_ai_circle/src/components/page_hero.dart';
 import 'package:fc_ai_circle/src/components/resource_link.dart';
 import 'package:fc_ai_circle/src/layouts/page_layout.dart';
+import 'package:fc_ai_circle/src/app/external_links.dart';
 import 'package:jaspr/browser.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
@@ -287,7 +288,6 @@ class StartersPage extends StatelessComponent {
         ),
         ResourceCategory(
           title: 'Dart AI Libraries',
-          useMasonryGrid: true,
           resources: [
             ResourceLink(
               emoji: '🔗',
@@ -378,13 +378,13 @@ class StartersPage extends StatelessComponent {
                 classes: 'cta_button',
                 [
                   a(
-                    href: 'https://github.com/fluttercommunity/fc_ai_circle',
+                    href: ExternalLink.surveyContributors.url,
                     target: Target.blank,
                     attributes: {
-                      'aria-label': 'Contribute on GitHub',
+                      'aria-label': 'Contribute: Take the Contributors Survey',
                       'rel': 'noopener noreferrer',
                     },
-                    [text('👉 Open a PR on GitHub')],
+                    [text('Become a Contributor')],
                   )
                 ],
               )

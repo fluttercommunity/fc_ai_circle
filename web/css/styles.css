@@ -592,13 +592,15 @@ button:focus-visible {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
     margin-bottom: var(--spacing-md);
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: all var(--transition-speed);
     border: 1px solid transparent;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .resource-link:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px var(--shadow-color);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--shadow-color);
 }
 
 .resource-emoji {
@@ -718,6 +720,8 @@ button:focus-visible {
     margin-bottom: var(--spacing-md);
     transition: all var(--transition-speed);
     border: 1px solid transparent;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .resource-link:hover {
