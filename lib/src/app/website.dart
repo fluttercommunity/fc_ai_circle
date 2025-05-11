@@ -21,8 +21,8 @@ class _SiteState extends State<Website> {
         link(href: '/css/fontawesome.css', rel: 'stylesheet'),
         link(href: '/css/brands.css', rel: 'stylesheet'),
         link(href: '/css/clickable-cards.css', rel: 'stylesheet'),
-        // script(src: '/js/clickable-cards.js', attributes: {'defer': 'true'}, []), // Commented out
-        // Style(styles: resetStyles)
+        script(src: '/js/scroll.js', attributes: {'defer': 'true'}, []),
+        script(src: '/js/clickable-cards.js', attributes: {'defer': 'true'}, []),
       ],
     );
     yield Router(

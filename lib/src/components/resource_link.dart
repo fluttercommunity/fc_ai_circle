@@ -1,5 +1,14 @@
 import 'package:jaspr/browser.dart';
 
+enum CardVariant {
+  standard,
+  highlighted,
+  compact,
+  blueGlow,
+  greenGlow,
+  orangeGlow,
+}
+
 class ResourceLink extends StatelessComponent {
   const ResourceLink({
     super.key,
@@ -16,29 +25,29 @@ class ResourceLink extends StatelessComponent {
   final String? emoji;
   final CardVariant variant;
 
+  String get variantClassName {
+    switch (variant) {
+      case CardVariant.standard:
+        return '';
+      case CardVariant.highlighted:
+        return 'highlighted';
+      case CardVariant.compact:
+        return 'compact';
+      case CardVariant.blueGlow:
+        return 'blue-glow';
+      case CardVariant.greenGlow:
+        return 'green-glow';
+      case CardVariant.orangeGlow:
+        return 'orange-glow';
+    }
+  }
+
   @override
   Iterable<Component> build(BuildContext context) sync* {
     final variantClasses = <String>['resource-link'];
 
-    switch (variant) {
-      case CardVariant.standard:
-        // No additional class needed
-        break;
-      case CardVariant.highlighted:
-        variantClasses.add('highlighted');
-        break;
-      case CardVariant.compact:
-        variantClasses.add('compact');
-        break;
-      case CardVariant.blueGlow:
-        variantClasses.add('blue-glow');
-        break;
-      case CardVariant.greenGlow:
-        variantClasses.add('green-glow');
-        break;
-      case CardVariant.orangeGlow:
-        variantClasses.add('orange-glow');
-        break;
+    if (variantClassName.isNotEmpty) {
+      variantClasses.add(variantClassName);
     }
 
     yield a(
@@ -74,13 +83,4 @@ class ResourceLink extends StatelessComponent {
       ],
     );
   }
-}
-
-enum CardVariant {
-  standard,
-  highlighted,
-  compact,
-  blueGlow,
-  greenGlow,
-  orangeGlow,
 }

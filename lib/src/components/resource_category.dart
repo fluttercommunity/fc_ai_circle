@@ -36,27 +36,75 @@ class ResourceCategory extends StatelessComponent {
   final bool useHorizontalScroll;
   final bool useMasonryGrid;
 
+  String get accentClassName {
+    switch (accent) {
+      case CategoryAccent.none:
+        return '';
+      case CategoryAccent.purple:
+        return 'purple-accent';
+      case CategoryAccent.blue:
+        return 'blue-accent';
+      case CategoryAccent.green:
+        return 'green-accent';
+      case CategoryAccent.orange:
+        return 'orange-accent';
+    }
+  }
+
+  Component renderScrollableContainer(String containerId) {
+    return div(
+      classes: 'scrollable-container dynamic-scroll-buttons',
+      attributes: {
+        'id': containerId,
+      },
+      [
+        div(
+          classes: 'scroll-nav-button scroll-nav-left',
+          attributes: {
+            'aria-label': 'Scroll left',
+            'style': 'display: none; background-color: var(--primary-color); color: white;',
+            'title': 'Scroll to see previous items',
+          },
+          [text('←')],
+        ),
+        div(
+          classes: 'scroll-nav-button scroll-nav-right',
+          attributes: {
+            'aria-label': 'Scroll right',
+            'style': 'display: none; background-color: var(--primary-color); color: white;',
+            'title': 'Scroll to see more items',
+          },
+          [text('→')],
+        ),
+        div(
+          classes: 'scrollable-items',
+          resources,
+        ),
+      ],
+    );
+  }
+
+  Component renderResourceList() {
+    return div(
+      classes: 'resource-list',
+      resources,
+    );
+  }
+
+  Component renderResourceGrid() {
+    return div(
+      classes: 'resource-grid',
+      resources,
+    );
+  }
+
   @override
   Iterable<Component> build(BuildContext context) sync* {
     final categoryClasses = <String>['resource-category'];
     final String containerId = 'scrollable-${DateTime.now().millisecondsSinceEpoch}';
 
-    switch (accent) {
-      case CategoryAccent.none:
-        // No additional class needed
-        break;
-      case CategoryAccent.purple:
-        categoryClasses.add('purple-accent');
-        break;
-      case CategoryAccent.blue:
-        categoryClasses.add('blue-accent');
-        break;
-      case CategoryAccent.green:
-        categoryClasses.add('green-accent');
-        break;
-      case CategoryAccent.orange:
-        categoryClasses.add('orange-accent');
-        break;
+    if (accentClassName.isNotEmpty) {
+      categoryClasses.add(accentClassName);
     }
 
     yield div(
@@ -68,110 +116,12 @@ class ResourceCategory extends StatelessComponent {
       [
         h3(classes: 'category-title', [text(title)]),
         if (useHorizontalScroll)
-          div(
-            classes: 'scrollable-container dynamic-scroll-buttons',
-            attributes: {
-              'id': containerId,
-              'data-onrender': '''
-                const container = document.getElementById('$containerId');
-                if (container) {
-                  const items = container.querySelector('.scrollable-items');
-                  const leftBtn = container.querySelector('.scroll-nav-left');
-                  const rightBtn = container.querySelector('.scroll-nav-right');
-                  
-                  function checkOverflow() {
-                    if (items && leftBtn && rightBtn) {
-                      const hasOverflow = items.scrollWidth > items.clientWidth;
-                      leftBtn.style.display = hasOverflow ? 'flex' : 'none';
-                      rightBtn.style.display = hasOverflow ? 'flex' : 'none';
-                    }
-                  }
-                  
-                  // Check on load
-                  checkOverflow();
-                  
-                  // Check on resize
-                  window.addEventListener('resize', checkOverflow);
-                  
-                  // Add event listeners for button clicks
-                  if (leftBtn) {
-                    leftBtn.addEventListener('click', () => {
-                      items.scrollBy({ left: -300, behavior: 'smooth' });
-                    });
-                  }
-                  
-                  if (rightBtn) {
-                    rightBtn.addEventListener('click', () => {
-                      items.scrollBy({ left: 300, behavior: 'smooth' });
-                    });
-                  }
-                }
-              '''
-            },
-            [
-              // Navigation buttons (visibility controlled by JS)
-              div(
-                classes: 'scroll-nav-button scroll-nav-left',
-                attributes: {
-                  'aria-label': 'Scroll left',
-                  'style': 'display: none; background-color: var(--primary-color); color: white;',
-                  'title': 'Scroll to see previous items',
-                },
-                [text('←')],
-              ),
-              div(
-                classes: 'scroll-nav-button scroll-nav-right',
-                attributes: {
-                  'aria-label': 'Scroll right',
-                  'style': 'display: none; background-color: var(--primary-color); color: white;',
-                  'title': 'Scroll to see more items',
-                },
-                [text('→')],
-              ),
-              div(
-                classes: 'scrollable-items',
-                resources,
-              ),
-            ],
-          )
+          renderScrollableContainer(containerId)
         else if (useGrid)
-          div(
-            classes: 'resource-grid',
-            resources,
-          )
+          renderResourceGrid()
         else
-          div(
-            classes: 'resource-list',
-            resources,
-          ),
+          renderResourceList(),
       ],
     );
-
-    // If we're using horizontal scroll, also add a script to the page
-    // to look for the data-onrender attribute and execute it
-    if (useHorizontalScroll) {
-      yield script(
-        src: '',
-        attributes: {'type': 'text/javascript'},
-        [
-          text('''
-            document.addEventListener('DOMContentLoaded', function() {
-              // Find all elements with data-onrender attribute
-              document.querySelectorAll('[data-onrender]').forEach(function(el) {
-                // Execute the script in data-onrender
-                try {
-                  const scriptContent = el.getAttribute('data-onrender');
-                  if (scriptContent) {
-                    new Function(scriptContent)();
-                  }
-                } catch (e) {
-                  console.error('Error executing onrender script:', e);
-                }
-              });
-            });
-          '''),
-        ],
-      );
-    }
   }
 }
