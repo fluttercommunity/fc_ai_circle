@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "webdev-serve",
+            "type": "shell",
+            "command": "webdev serve --auto refresh",
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "dart",
+                "pattern": {
+                    "regexp": ".",
+                    "file": 1,
+                    "location": 2,
+                    "message": 3
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^\\[INFO\\] Serving",
+                    "endsPattern": "^\\[INFO\\] Succeeded"
+                }
+            }
+        }
+    ]
+} 

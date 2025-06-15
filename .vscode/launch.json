@@ -5,10 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "ai_builders_circle",
+            "name": "Run with Dart",
             "request": "launch",
             "type": "dart",
             "program": "web/main.dart"
+        },
+        {
+            "name": "Run with webdev (auto-refresh)",
+            "request": "launch",
+            "type": "dart",
+            "program": "web/main.dart",
+            "args": [
+                "--web-renderer",
+                "html",
+                "--web-port",
+                "8080"
+            ],
+            "preLaunchTask": "webdev-serve"
         }
     ]
 }
