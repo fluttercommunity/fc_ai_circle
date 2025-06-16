@@ -264,12 +264,6 @@ class StartersPage extends StatelessComponent {
               url: 'https://pub.dev/packages/langchain',
             ),
             ResourceLink(
-              title: 'Flutter GenAI',
-              description:
-                  'Advanced. A collection of Flutter plugins for integrating generative AI capabilities into your applications.',
-              url: 'https://pub.dev/packages/flutter_genai',
-            ),
-            ResourceLink(
               title: 'Dart OpenAI',
               description:
                   'Beginner/Intermediate. A Dart client for OpenAI API with chat, completions, embeddings and more.',
