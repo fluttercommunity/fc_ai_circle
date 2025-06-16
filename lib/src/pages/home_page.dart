@@ -1,6 +1,7 @@
 import 'package:fc_ai_circle/src/components/take_survey.dart';
 import 'package:fc_ai_circle/src/layouts/page_layout.dart';
 import 'package:fc_ai_circle/src/pages/builders_page.dart';
+import 'package:fc_ai_circle/src/app/external_links.dart';
 import 'package:jaspr/browser.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
@@ -42,7 +43,15 @@ class _HeroSection extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     yield section(classes: 'hero', [
       div(classes: 'container', [
-        h1([text('Build Agentic Flutter Experiences')]),
+        h1(
+          classes: 'page-title',
+          [
+            span(
+              classes: 'title-text',
+              [text('Build Agentic Flutter Experiences')],
+            ),
+          ],
+        ),
         p([
           text(
             'A community-powered space for developers building '
@@ -58,7 +67,12 @@ class _HeroSection extends StatelessComponent {
           ),
           a(
             classes: 'secondary-button',
-            href: '#',
+            href: ExternalLink.youTubeAgenticQA.url, // The direct URL
+            target: Target.blank, // Jaspr's way to open in a new tab
+            attributes: {
+              'rel': 'noopener noreferrer',
+              'aria-label': 'Learn what Agentic Flutter is',
+            },
             [text('What is Agentic Flutter?')],
           ),
         ]),
@@ -80,21 +94,21 @@ class _FeaturesSection extends StatelessComponent {
           [text('Highlights from the Flutter Community AI Circle')],
         ),
         div(classes: 'features-grid', [
-          // TODO: Add YouTube video embed for past livestream
           _FeatureCard(
             title: 'Past Livestream',
-            description: 'Vibe Coding a Card Game with Norbert & Friends',
+            description: 'FCAIC #1 - Prompt, Code, Think: Welcome to AI in Flutter',
+            url:
+                'https://www.youtube.com/watch?v=Gub1DY8ScwU&list=PL4dBIh1xps-HIYvaEIbLWHZqt_WGBfpx3',
           ),
-          // TODO: Add calendar integration or dynamic content for upcoming events
-          //  - can they add them to their calendar or directly go set a reminder?
           _FeatureCard(
-            title: 'Upcoming',
-            description: 'Humpday Q&A: Agentic Apps Spotlight',
+            title: 'Agentic Apps Spotlight',
+            description: 'Humpday Q&A: AI Special with Andrew Brogdon',
+            url: ExternalLink.youTubeAgenticQA.url,
           ),
-          // TODO: Add link to survey form/ or forms - maybe regular community one idk.
           _FeatureCard(
             title: 'Survey',
             description: 'Help shape open-source tooling for AI in Flutter',
+            url: ExternalLink.surveyCommunity.url,
           ),
         ]),
       ]),
@@ -106,20 +120,37 @@ class _FeatureCard extends StatelessComponent {
   const _FeatureCard({
     required this.title,
     required this.description,
+    this.url,
   });
 
   final String title;
   final String description;
+  final String? url;
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-      classes: 'feature-card',
-      [
-        h3([text(title)]),
-        p([text(description)]),
-      ],
-    );
+    final cardContent = [
+      h3([text(title)]),
+      p([text(description)]),
+    ];
+
+    if (url != null) {
+      yield a(
+        classes: 'feature-card feature-card-link',
+        href: url!,
+        target: Target.blank,
+        attributes: {
+          'rel': 'noopener noreferrer',
+          'aria-label': 'Open $title resource',
+        },
+        cardContent,
+      );
+    } else {
+      yield div(
+        classes: 'feature-card',
+        cardContent,
+      );
+    }
   }
 }
 

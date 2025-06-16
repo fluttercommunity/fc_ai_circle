@@ -3,6 +3,9 @@ import 'package:jaspr/browser.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:fc_ai_circle/src/pages/builders_page.dart';
 import 'package:fc_ai_circle/src/pages/starters_page.dart';
+import 'package:fc_ai_circle/src/pages/privacy_policy_page.dart';
+import 'package:fc_ai_circle/src/pages/code_of_conduct_page.dart';
+import 'dart:js' as js;
 
 class Footer extends StatelessComponent {
   @override
@@ -13,8 +16,8 @@ class Footer extends StatelessComponent {
           FooterColumn(
             title: 'Community',
             links: [
-              (path: '#', label: 'What is Agentic Flutter?'),
-              (path: '#', label: 'Take the contributors survey'),
+              (path: ExternalLink.youTubeAgenticQA.url, label: 'What is Agentic Flutter?'),
+              (path: ExternalLink.surveyContributors.url, label: 'Take the contributors survey'),
             ],
           ),
           FooterColumn(
@@ -28,8 +31,8 @@ class Footer extends StatelessComponent {
           FooterColumn(
             title: 'Legal',
             links: [
-              (path: '#', label: 'Privacy Policy'),
-              (path: '#', label: 'Code of Conduct'),
+              (path: PrivacyPolicyPage.path, label: 'Privacy Policy'),
+              (path: CodeOfConductPage.path, label: 'Code of Conduct'),
             ],
           ),
         ]),
@@ -88,11 +91,37 @@ class FooterColumn extends StatelessComponent {
       ul([
         for (var link in links) //
           li([
-            a(
-              href: link.path,
-              onClick: () => Router.of(context).push(link.path),
-              [text(link.label)],
-            )
+            if (link.path == '#coming-soon')
+              span(
+                classes: 'footer-link coming-soon-link',
+                attributes: {
+                  'data-tooltip': 'Coming soon',
+                  'aria-label': '${link.label} (Coming soon)'
+                },
+                [text(link.label)],
+              )
+            else if (link.path.startsWith('http'))
+              a(
+                href: link.path,
+                target: Target.blank,
+                attributes: {
+                  'rel': 'noopener noreferrer',
+                  'aria-label': link.label,
+                },
+                [text(link.label)],
+              )
+            else
+              a(
+                href: link.path,
+                onClick: () {
+                  // Push to the new route
+                  Router.of(context).push(link.path);
+                  // Force scroll to top with delay to ensure it happens after navigation
+                  js.context.callMethod(
+                      'eval', ['setTimeout(function() { window.scrollTo(0, 0); }, 10);']);
+                },
+                [text(link.label)],
+              )
           ]),
       ]),
     ]);

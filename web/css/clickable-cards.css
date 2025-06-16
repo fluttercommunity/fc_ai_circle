@@ -1,0 +1,136 @@
+/* Make resource cards fully clickable */
+/* The .resource-link class is now on an <a> tag */
+a.resource-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.resource-link:hover {
+  transform: translateY(-2px);
+}
+
+/* Style for the title, which is now a span */
+.resource-link .resource-title {
+  font-weight: bold;
+  margin-bottom: 0.25em;
+}
+
+/* Adjust emoji and content div styling if needed due to flex layout on a.resource-link */
+.resource-link .resource-emoji {
+  margin-right: 0.75em;
+  font-size: 1.5em;
+}
+
+.resource-link .resource-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.resource-link .resource-description {
+  font-size: 0.9em;
+  color: var(--text-secondary-color, #555);
+  line-height: 1.4;
+}
+
+/* Remove the clickable overlay - JavaScript will handle this
+.resource-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1; 
+}
+*/
+
+.resource-link a.resource-title {
+  position: relative;
+  /* z-index: 2; */ /* No longer needed as the overlay is removed */
+}
+
+/* Survey callout styling */
+.survey-callout-container {
+  display: flex; /* Optional: for centering the callout if it has a max-width */
+  justify-content: center; /* Optional: for centering */
+  padding: 2rem 0; /* Add some vertical spacing around the callout */
+}
+
+.survey-callout {
+  background-color: var(--primary-color, #2c3e50); /* Use a theme variable or a dark bg */
+  color: var(--text-color-light, #ecf0f1); /* Light text for dark background */
+  padding: 2rem 2.5rem; /* Generous padding */
+  border-radius: 12px; /* Soft rounded corners */
+  /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); */ /* Softer, more modern shadow if needed, or remove if it was causing issues */
+  /* Remove overflow: hidden unless specifically needed for a child element */
+  /* max-width: 800px; */ /* Optional: constrain width */
+  /* margin: 3rem auto; */ /* Replaced by survey-callout-container for centering */
+}
+
+.survey-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem; /* Increased spacing */
+  gap: 1rem;
+}
+
+.large-emoji {
+  font-size: 2.8rem; /* Slightly larger emoji */
+  /* padding: 0.5rem; */ /* Padding might not be needed if alignment is good */
+  display: inline-block;
+}
+
+.survey-title {
+  margin: 0;
+  font-size: 1.6rem; /* Adjusted for new shorter title */
+  font-weight: 600; /* Bolder title */
+  line-height: 1.3;
+  color: inherit; /* Inherit from .survey-callout */
+}
+
+.survey-description {
+  font-size: 1rem; /* Standard paragraph size */
+  line-height: 1.6;
+  margin-bottom: 1.75rem; /* More space before the button */
+  color: inherit; /* Inherit from .survey-callout, or slightly less prominent */
+  opacity: 0.9; /* Slightly less prominent description text */
+}
+
+.centered-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.pulse-button {
+  animation: pulse 2s infinite;
+}
+
+.pulse-button-wrapper a {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+/* Utility class for vertical spacing between sections */
+.section-spacer {
+  height: 2em;
+  width: 100%;
+}
