@@ -1692,7 +1692,6 @@ button:focus-visible {
     /* Fix any potential horizontal overflow issues */
     html,
     body {
-        overflow-x: hidden;
         width: 100%;
     }
 }
