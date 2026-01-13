@@ -17,6 +17,7 @@ class Footer extends StatelessComponent {
             title: 'Community',
             links: [
               (path: ExternalLink.youTubeAgenticQA.url, label: 'What is Agentic Flutter?'),
+              (path: ExternalLink.sessionizeCallForSpeakers.url, label: 'Call for speakers'),
               (path: ExternalLink.surveyContributors.url, label: 'Take the contributors survey'),
             ],
           ),
@@ -39,7 +40,7 @@ class Footer extends StatelessComponent {
         div(classes: 'footer-bottom', [
           small(
             classes: 'copyright',
-            [text('© 2025 Flutter Community AI Circle. All rights reserved.')],
+            [text('© 2026 Flutter Community AI Circle. All rights reserved.')],
           ),
           div(classes: 'social-links', [
             SocialLink(

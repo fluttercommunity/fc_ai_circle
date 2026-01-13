@@ -208,9 +208,14 @@ class BuildersPage extends StatelessComponent {
               url: ExternalLink.geminiFunctionCallingDocs.url,
             ),
             ResourceLink(
-              title: 'MCP for Flutter Developers',
-              description: 'Understanding the Model Context Protocol for Flutter applications',
-              url: ExternalLink.youTubeJhinLeeMCPHumpdayQA.url,
+              title: 'dart_mcp (Official Lab SDK)',
+              description: 'Official Dart labs package for making MCP servers and clients',
+              url: 'https://pub.dev/packages/dart_mcp',
+            ),
+            ResourceLink(
+              title: 'mcp_dart (Community SDK)',
+              description: 'Dart SDK for the Model Context Protocol (MCP)',
+              url: 'https://pub.dev/packages/mcp_dart',
             ),
           ],
         ),

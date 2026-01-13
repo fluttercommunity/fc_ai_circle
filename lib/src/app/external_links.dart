@@ -15,6 +15,9 @@ enum ExternalLink {
   socialMastodon('https://fluttercommunity.social/@FlutterComm'),
   socialGitHub('https://github.com/fluttercommunity/fc_ai_circle'),
   socialMedium('https://medium.com/flutter-community'),
+  sessionizeCallForSpeakers('https://sessionize.com/fcaic/'),
+  buildWithAI2026(
+      'https://gdg.community.dev/events/details/google-gdg-nyc-presents-build-with-ai-2026-ai-flutter-club-week-1-introduction-to-flutter-amp-ai/'),
   ;
 
   const ExternalLink(this.url);

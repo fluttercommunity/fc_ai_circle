@@ -95,10 +95,9 @@ class _FeaturesSection extends StatelessComponent {
         ),
         div(classes: 'features-grid', [
           _FeatureCard(
-            title: 'Past Livestream',
-            description: 'FCAIC #1 - Prompt, Code, Think: Welcome to AI in Flutter',
-            url:
-                'https://www.youtube.com/watch?v=Gub1DY8ScwU&list=PL4dBIh1xps-HIYvaEIbLWHZqt_WGBfpx3',
+            title: '2026 Series',
+            description: 'Build with AI 2026: Introduction to Flutter and AI',
+            url: ExternalLink.buildWithAI2026.url,
           ),
           _FeatureCard(
             title: 'Agentic Apps Spotlight',
