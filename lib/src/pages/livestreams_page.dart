@@ -109,7 +109,7 @@ class _HeroCallout extends StatelessComponent {
         ),
         a(
           classes: 'secondary-button',
-          href: ExternalLink.forumChat.url,
+          href: ExternalLink.sessionizeCallForSpeakers.url,
           target: Target.blank,
           attributes: {'rel': 'noopener noreferrer'},
           [text('Pitch a topic')],

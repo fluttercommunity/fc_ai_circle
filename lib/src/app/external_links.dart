@@ -15,6 +15,7 @@ enum ExternalLink {
   socialMastodon('https://fluttercommunity.social/@FlutterComm'),
   socialGitHub('https://github.com/fluttercommunity/fc_ai_circle'),
   socialMedium('https://medium.com/flutter-community'),
+  sessionizeCallForSpeakers('https://sessionize.com/fcaic'),
   ;
 
   const ExternalLink(this.url);
