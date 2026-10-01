@@ -1,4 +1,5 @@
 import 'package:fc_ai_circle/src/pages/builders_page.dart';
+import 'package:fc_ai_circle/src/pages/livestreams_page.dart';
 import 'package:fc_ai_circle/src/pages/home_page.dart';
 import 'package:fc_ai_circle/src/pages/starters_page.dart';
 import 'package:fc_ai_circle/src/pages/privacy_policy_page.dart';
@@ -30,6 +31,7 @@ class _SiteState extends State<Website> {
         ...HomePage.route(),
         ...StartersPage.route(),
         ...BuildersPage.route(),
+        ...LivestreamsPage.route(),
         ...PrivacyPolicyPage.route(),
         ...CodeOfConductPage.route(),
       ],

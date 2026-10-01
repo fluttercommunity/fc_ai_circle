@@ -31,6 +31,14 @@ webdev serve --debug-extension
 
 or you use devtools [Debugging Web Info](https://dart.dev/web/debugging)
 
+## Update the livestreams page
+
+After each stream, regenerate the episode list from the YouTube playlist and commit the result:
+
+```sh
+dart run tool/fetch_livestreams.dart
+```
+
 ## Build and Deploy
 
 ```sh
