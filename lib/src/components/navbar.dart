@@ -4,6 +4,7 @@ import 'package:jaspr/browser.dart';
 import 'package:jaspr_router/jaspr_router.dart' show Router;
 import 'package:fc_ai_circle/src/pages/builders_page.dart';
 import 'package:fc_ai_circle/src/pages/home_page.dart';
+import 'package:fc_ai_circle/src/pages/livestreams_page.dart';
 import 'package:fc_ai_circle/src/pages/starters_page.dart';
 import 'package:web/web.dart' show window;
 
@@ -71,6 +72,7 @@ class _NavbarState extends State<Navbar> {
                     _NavItem(path: '/', label: 'Home'),
                     _NavItem(path: StartersPage.path, label: 'Starters'),
                     _NavItem(path: BuildersPage.path, label: 'Builders'),
+                    _NavItem(path: LivestreamsPage.path, label: 'Livestreams'),
                     _NavItem(link: ExternalLink.youTubePlaylist, label: 'YouTube'),
                     _NavItem(link: ExternalLink.socialGitHub, label: 'GitHub'),
                     _NavItem(link: ExternalLink.forumCategory, label: 'Forum'),

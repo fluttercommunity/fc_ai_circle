@@ -2,6 +2,7 @@ import 'package:fc_ai_circle/src/app/external_links.dart';
 import 'package:jaspr/browser.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:fc_ai_circle/src/pages/builders_page.dart';
+import 'package:fc_ai_circle/src/pages/livestreams_page.dart';
 import 'package:fc_ai_circle/src/pages/starters_page.dart';
 import 'package:fc_ai_circle/src/pages/privacy_policy_page.dart';
 import 'package:fc_ai_circle/src/pages/code_of_conduct_page.dart';
@@ -25,6 +26,7 @@ class Footer extends StatelessComponent {
             links: [
               (path: StartersPage.path, label: 'Starters'),
               (path: BuildersPage.path, label: 'Builders'),
+              (path: LivestreamsPage.path, label: 'Livestreams'),
             ],
           ),
           div([]),
